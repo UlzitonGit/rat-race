@@ -1,2 +1,2 @@
-# symmetrical-disco
+# Rat race
 VERY GOOD AND COOL GAME
