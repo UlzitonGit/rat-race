@@ -52,7 +52,7 @@ public class PlayerController : MonoBehaviour
         animator.SetBool("Concentrate", concentrate);
         animator.SetFloat("Input", rb.velocity.magnitude);
         animator.SetFloat("Horizontal", moveDireciton.x * Input.GetAxis("Horizontal"));
-        animator.SetFloat("Vertical", moveDireciton.y * Input.GetAxis("Vertical"));
+        animator.SetFloat("Vertical", moveDireciton.z * Input.GetAxis("Vertical"));
     }
     private void Concentration()
     {
