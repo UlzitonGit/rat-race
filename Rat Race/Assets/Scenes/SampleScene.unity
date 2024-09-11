@@ -39797,6 +39797,57 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 379863870}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1502808312
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1502808314}
+  - component: {fileID: 1502808313}
+  m_Layer: 0
+  m_Name: TestManaAllFack
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1502808313
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1502808312}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6155f3bcbdcb59b419b1b6fb8c8d5925, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  manaPoint: 10
+  plusMaxMana: 0
+  multiplierPoint: 6
+  maxMana: 0
+  mana: 0
+  plusManaSec: 1
+  manaInMoment: {fileID: 0}
+--- !u!4 &1502808314
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1502808312}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -81.73543, y: 102.01649, z: -148.40308}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1510396392 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4892733386000982, guid: 951659d72043e7843aad08d3ddc3012a,
@@ -62184,3 +62235,4 @@ SceneRoots:
   - {fileID: 279063581}
   - {fileID: 51506483}
   - {fileID: 55621531}
+  - {fileID: 1502808314}

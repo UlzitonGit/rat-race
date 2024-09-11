@@ -24,9 +24,6 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-
-
-
         Walk();
         Concentration();
         Animation();
@@ -37,18 +34,29 @@ public class PlayerController : MonoBehaviour
         float _Yspeed = Input.GetAxis("Vertical") * moveSpeed;
         moveDireciton = new Vector3(_Xspeed, 0, _Yspeed);
         moveDireciton.Normalize();
-        rb.velocity = new Vector3(_Xspeed, rb.velocity.y, _Yspeed);
-        if (rb.velocity.magnitude > 0.1f && concentrate == false)
+        
+        
+        if (moveDireciton.magnitude > 0.1f && concentrate == false)
         {
-
-            Quaternion toRot = Quaternion.LookRotation(moveDireciton, Vector3.up);
+           
+            Quaternion toRot = Quaternion.LookRotation(moveDireciton.ToIso(), Vector3.up);
             transform.rotation = Quaternion.RotateTowards(transform.rotation, toRot, 360 * Time.deltaTime);
+        }
+        if (concentrate)
+        {
+            rb.velocity = new Vector3(_Xspeed, rb.velocity.y, _Yspeed);
+
+        }
+        else
+        {
+            rb.MovePosition(transform.position + (transform.forward * moveDireciton.magnitude)* moveSpeed * Time.deltaTime);
+
         }
     }
     private void Animation()
     {
-        if (rb.velocity.magnitude >= 0.1) animator.SetBool("walk", true);
-        if (rb.velocity.magnitude <= 0.1) animator.SetBool("walk", false);
+        if (moveDireciton.magnitude >= 0.1) animator.SetBool("walk", true);
+        if (moveDireciton.magnitude <= 0.1) animator.SetBool("walk", false);
         Vector3 localMove = transform.InverseTransformDirection(moveDireciton);
         animator.SetBool("Concentrate", concentrate);
         //animator.SetFloat("Input", localMove.magnitude);
