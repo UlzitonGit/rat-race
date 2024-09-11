@@ -66,16 +66,16 @@ public class PlayerController : MonoBehaviour
             enemyToConcentrate = 0;
             concentrate = false;
         }
-        if (Input.GetKeyUp(KeyCode.E) && enemyDetecter.enemies.Count != 0 && concentrate == false)
+        if (Input.GetKeyDown(KeyCode.E) && enemyDetecter.enemies.Count != 0 && concentrate == false)
         {
             concentrate = true;
         }
-        else if (Input.GetKeyUp(KeyCode.E) && concentrate == true)
+        else if (Input.GetKeyDown(KeyCode.E) && concentrate == true)
         {
             enemyToConcentrate = 0;
             concentrate = false;
         }
-        if (Input.GetKeyUp(KeyCode.Mouse2) && enemyDetecter.enemies.Count != 0)
+        if (Input.GetKeyDown(KeyCode.Mouse2) && enemyDetecter.enemies.Count != 0)
         {
 
             if (enemyToConcentrate >= enemyDetecter.enemies.Count - 1) enemyToConcentrate = 0;
