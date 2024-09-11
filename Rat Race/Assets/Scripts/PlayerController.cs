@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
     Rigidbody rb;
     public float moveSpeed = 5f;
     EnemyDetecter enemyDetecter;
-    bool concentrate = false;
+    public bool concentrate = false;
     [SerializeField] Animator animator;
     int enemyToConcentrate = 0;
     Vector3 moveDireciton;
@@ -33,8 +33,8 @@ public class PlayerController : MonoBehaviour
     }
     private void Walk()
     {
-        float _Xspeed = Input.GetAxisRaw("Horizontal") * moveSpeed;
-        float _Yspeed = Input.GetAxisRaw("Vertical") * moveSpeed;
+        float _Xspeed = Input.GetAxis("Horizontal") * moveSpeed;
+        float _Yspeed = Input.GetAxis("Vertical") * moveSpeed;
         moveDireciton = new Vector3(_Xspeed, 0, _Yspeed);
         moveDireciton.Normalize();
         rb.velocity = new Vector3(_Xspeed, rb.velocity.y, _Yspeed);
@@ -49,10 +49,11 @@ public class PlayerController : MonoBehaviour
     {
         if (rb.velocity.magnitude >= 0.1) animator.SetBool("walk", true);
         if (rb.velocity.magnitude <= 0.1) animator.SetBool("walk", false);
+        Vector3 localMove = transform.InverseTransformDirection(moveDireciton);
         animator.SetBool("Concentrate", concentrate);
-        animator.SetFloat("Input", rb.velocity.magnitude);
-        animator.SetFloat("Horizontal", moveDireciton.x * Input.GetAxis("Horizontal"));
-        animator.SetFloat("Vertical", moveDireciton.z * Input.GetAxis("Vertical"));
+        //animator.SetFloat("Input", localMove.magnitude);
+        animator.SetFloat("Horizontal", localMove.z);
+        animator.SetFloat("Vertical", localMove.x);
     }
     private void Concentration()
     {
