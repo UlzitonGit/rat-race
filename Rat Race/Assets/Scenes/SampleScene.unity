@@ -39841,7 +39841,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1502808312}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -81.73543, y: 102.01649, z: -148.40308}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -62078,6 +62078,21 @@ PrefabInstance:
       propertyPath: spp
       value: 
       objectReference: {fileID: 1634613816}
+    - target: {fileID: 3740939951935750597, guid: a552ef8a30dce6246a9e1562e671f6d7,
+        type: 3}
+      propertyPath: damage
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3740939951935750597, guid: a552ef8a30dce6246a9e1562e671f6d7,
+        type: 3}
+      propertyPath: HitMinusMana
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3740939951935750597, guid: a552ef8a30dce6246a9e1562e671f6d7,
+        type: 3}
+      propertyPath: ManaUIScript
+      value: 
+      objectReference: {fileID: 1502808312}
     - target: {fileID: 4404774903345532237, guid: a552ef8a30dce6246a9e1562e671f6d7,
         type: 3}
       propertyPath: m_LocalPosition.x
