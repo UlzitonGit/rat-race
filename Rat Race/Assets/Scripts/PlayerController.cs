@@ -10,8 +10,14 @@ public class PlayerController : MonoBehaviour
     EnemyDetecter enemyDetecter;
     public bool concentrate = false;
     [SerializeField] Animator animator;
+    [SerializeField] ParticleSystem dashPart;
     int enemyToConcentrate = 0;
     Vector3 moveDireciton;
+    bool canConcentrate = true;
+    public bool canWalk = true;
+    public bool canDash = true;
+   
+   
 
     // Start is called before the first frame update
     void Start()
@@ -27,15 +33,43 @@ public class PlayerController : MonoBehaviour
         Walk();
         Concentration();
         Animation();
+       
     }
+   
+    IEnumerator Dashing(Vector3 dir)
+    {
+        print("y");
+        canWalk = false;
+        canDash = false;
+        rb.AddForce(dir, ForceMode.Impulse);
+        animator.SetTrigger("Dash");
+        dashPart.Play();
+        yield return new WaitForSeconds(0.4f);
+        rb.velocity = Vector3.zero;
+        canWalk = true;
+        yield return new WaitForSeconds(0.6f);
+        canDash = true;             
+    }
+   
+
+  
     private void Walk()
     {
+       
+        if (canWalk == false) return;
         float _Xspeed = Input.GetAxis("Horizontal") * moveSpeed;
         float _Yspeed = Input.GetAxis("Vertical") * moveSpeed;
         moveDireciton = new Vector3(_Xspeed, 0, _Yspeed);
         moveDireciton.Normalize();
-        
-        
+       
+        if(canDash == true && Input.GetKey(KeyCode.LeftShift) && concentrate == true)
+        {
+            StartCoroutine(Dashing(moveDireciton * 18));
+        }
+        if (canDash == true && Input.GetKey(KeyCode.LeftShift) && concentrate == false)
+        {
+            StartCoroutine(Dashing(transform.forward * 25));
+        }
         if (moveDireciton.magnitude > 0.1f && concentrate == false)
         {
            
@@ -45,7 +79,6 @@ public class PlayerController : MonoBehaviour
         if (concentrate)
         {
             rb.velocity = new Vector3(_Xspeed, rb.velocity.y, _Yspeed);
-
         }
         else
         {
@@ -75,22 +108,31 @@ public class PlayerController : MonoBehaviour
             enemyToConcentrate = 0;
             concentrate = false;
         }
-        if (Input.GetKeyDown(KeyCode.E) && enemyDetecter.enemies.Count != 0 && concentrate == false)
+        if (Input.GetKey(KeyCode.E) && enemyDetecter.enemies.Count != 0 && concentrate == false && canConcentrate == true)
         {
             concentrate = true;
+            StartCoroutine(ReloadingConcentration());
         }
-        else if (Input.GetKeyDown(KeyCode.E) && concentrate == true)
+        else if (Input.GetKey(KeyCode.E) && concentrate == true && canConcentrate == true)
         {
             enemyToConcentrate = 0;
             concentrate = false;
+            StartCoroutine(ReloadingConcentration());
         }
-        if (Input.GetKeyDown(KeyCode.Mouse2) && enemyDetecter.enemies.Count != 0)
+        if (Input.GetKey(KeyCode.Mouse2) && enemyDetecter.enemies.Count != 0 && canConcentrate == true)
         {
 
             if (enemyToConcentrate >= enemyDetecter.enemies.Count - 1) enemyToConcentrate = 0;
             else enemyToConcentrate++;
             print(enemyToConcentrate);
+            StartCoroutine(ReloadingConcentration());
 
         }
+    }
+    IEnumerator ReloadingConcentration()
+    {
+        canConcentrate = false;
+        yield return new WaitForSeconds(0.3f);
+        canConcentrate = true;
     }
 }
