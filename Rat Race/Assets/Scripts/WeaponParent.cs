@@ -8,16 +8,16 @@ public class WeaponParent : MonoBehaviour
     [SerializeField] Transform spp;
     //[SerializeField] int damage = 30;
     [SerializeField] Animator anim;
-    
+
     public bool canAttack = true;
-  
+   
     public void AttackMele()
     {
         if (canAttack == false) return;
         StartCoroutine(Attacking());
     }
     IEnumerator Attacking()
-    {
+    { 
         canAttack = false;
         GameObject mele = Instantiate(meleTrigger, spp.position, spp.rotation);
         anim.SetTrigger("Attack");

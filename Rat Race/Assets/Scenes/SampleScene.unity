@@ -37006,6 +37006,37 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 241378740}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1165544324
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1165544325}
+  m_Layer: 0
+  m_Name: SpawnBulletKnife
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1165544325
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1165544324}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 2.8}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2119398685}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1166625112 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4965531068239184, guid: 208137c698ec9784c87d2e79635e7cc5,
@@ -44716,12 +44747,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6155f3bcbdcb59b419b1b6fb8c8d5925, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  manaPoint: 10
+  manaPoint: 100
   plusMaxMana: 0
   multiplierPoint: 6
   maxMana: 0
   mana: 0
-  plusManaSec: 1
+  plusManaSec: 2
   manaInMoment: {fileID: 0}
 --- !u!4 &1502808314
 Transform:
@@ -66968,6 +66999,16 @@ PrefabInstance:
       propertyPath: dashPart
       value: 
       objectReference: {fileID: 554212482}
+    - target: {fileID: 363751469122441734, guid: a552ef8a30dce6246a9e1562e671f6d7,
+        type: 3}
+      propertyPath: ManaUIScript
+      value: 
+      objectReference: {fileID: 1502808312}
+    - target: {fileID: 363751469122441734, guid: a552ef8a30dce6246a9e1562e671f6d7,
+        type: 3}
+      propertyPath: minusManaDech
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 447287302998774618, guid: a552ef8a30dce6246a9e1562e671f6d7,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -67012,6 +67053,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -12.844779
+      objectReference: {fileID: 0}
+    - target: {fileID: 1088926275242946841, guid: a552ef8a30dce6246a9e1562e671f6d7,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 4.6
       objectReference: {fileID: 0}
     - target: {fileID: 1249243351853091033, guid: a552ef8a30dce6246a9e1562e671f6d7,
         type: 3}
@@ -67190,6 +67236,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3740939951935750597, guid: a552ef8a30dce6246a9e1562e671f6d7,
         type: 3}
+      propertyPath: spawnBullet
+      value: 
+      objectReference: {fileID: 1165544325}
+    - target: {fileID: 3740939951935750597, guid: a552ef8a30dce6246a9e1562e671f6d7,
+        type: 3}
+      propertyPath: speedBullet
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 3740939951935750597, guid: a552ef8a30dce6246a9e1562e671f6d7,
+        type: 3}
       propertyPath: HitMinusMana
       value: 8
       objectReference: {fileID: 0}
@@ -67198,6 +67254,17 @@ PrefabInstance:
       propertyPath: ManaUIScript
       value: 
       objectReference: {fileID: 1502808312}
+    - target: {fileID: 3740939951935750597, guid: a552ef8a30dce6246a9e1562e671f6d7,
+        type: 3}
+      propertyPath: prefabBullet
+      value: 
+      objectReference: {fileID: 4994684628410747729, guid: 78db13bd909a22748993aed9bbd8a8b8,
+        type: 3}
+    - target: {fileID: 3740939951935750597, guid: a552ef8a30dce6246a9e1562e671f6d7,
+        type: 3}
+      propertyPath: timeLifeBullet
+      value: 0.7
+      objectReference: {fileID: 0}
     - target: {fileID: 4404774903345532237, guid: a552ef8a30dce6246a9e1562e671f6d7,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -67448,6 +67515,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 177.4678
       objectReference: {fileID: 0}
+    - target: {fileID: 7281504879769069711, guid: a552ef8a30dce6246a9e1562e671f6d7,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7295518351609748750, guid: a552ef8a30dce6246a9e1562e671f6d7,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -67560,6 +67632,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 554212480}
+    - targetCorrespondingSourceObject: {fileID: 4404774903345532237, guid: a552ef8a30dce6246a9e1562e671f6d7,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1165544325}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a552ef8a30dce6246a9e1562e671f6d7, type: 3}
 --- !u!1001 &8317519306265249488

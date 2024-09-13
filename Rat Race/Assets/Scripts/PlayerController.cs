@@ -16,15 +16,16 @@ public class PlayerController : MonoBehaviour
     bool canConcentrate = true;
     public bool canWalk = true;
     public bool canDash = true;
-   
-   
 
-    // Start is called before the first frame update
+    [Header("Mana")]
+    [SerializeField] float minusManaDech;
+    [SerializeField] private GameObject ManaUIScript;
+    private ManaUI manaUI;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         enemyDetecter = GetComponentInChildren<EnemyDetecter>();
-
+        manaUI = ManaUIScript.GetComponent<ManaUI>();
     }
 
     // Update is called once per frame
@@ -38,7 +39,8 @@ public class PlayerController : MonoBehaviour
    
     IEnumerator Dashing(Vector3 dir)
     {
-        print("y");
+        //print("y");
+        manaUI.mana -= minusManaDech;
         canWalk = false;
         canDash = false;
         rb.AddForce(dir, ForceMode.Impulse);
