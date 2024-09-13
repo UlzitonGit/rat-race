@@ -33,7 +33,7 @@ public class ManaUI : MonoBehaviour
     private void Mana()
     {
         maxMana = manaPoint * multiplierPoint + plusMaxMana;
-        //manaInMoment.fillAmount = mana / maxMana;
+        manaInMoment.fillAmount = mana / maxMana;
         
         if(mana < maxMana && StartPlusMana)
         {

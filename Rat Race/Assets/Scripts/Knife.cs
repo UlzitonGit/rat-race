@@ -15,10 +15,12 @@ public class Knife : WeaponParent
     private ManaUI manaUI;
     public float HitMinusMana;
 
-    // Start is called before the first frame update
+
+    [SerializeField] GameObject trail;
+    [SerializeField] Transform trailSpp;
     void Start()
     {
-      manaUI = ManaUIScript.GetComponent<ManaUI>();
+         manaUI = ManaUIScript.GetComponent<ManaUI>();
     }
 
     // Update is called once per frame
@@ -27,8 +29,20 @@ public class Knife : WeaponParent
         if(Input.GetKey(KeyCode.Mouse0) && canAttack == true)
         {
             AttackMele();
-            Instantiate(prefabBullet, spawnBullet.position, spawnBullet.rotation);
+            StartCoroutine(VFX());
+            
             manaUI.mana -= HitMinusMana;
         }
+    }
+    IEnumerator VFX()
+    {
+        yield return new WaitForSeconds(0.2f);
+        GameObject trailSpawned = Instantiate(trail, trailSpp);
+        Instantiate(prefabBullet, spawnBullet.position, spawnBullet.rotation);
+        yield return new WaitForSeconds(0.2f);
+        trailSpawned.transform.parent = null;
+        yield return new WaitForSeconds(2.5f);
+        Destroy(trailSpawned);
+
     }
 }

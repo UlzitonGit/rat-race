@@ -35,26 +35,7 @@ public class PlayerController : MonoBehaviour
         Concentration();
         Animation();
        
-    }
-   
-    IEnumerator Dashing(Vector3 dir)
-    {
-        //print("y");
-        manaUI.mana -= minusManaDech;
-        canWalk = false;
-        canDash = false;
-        rb.AddForce(dir, ForceMode.Impulse);
-        animator.SetTrigger("Dash");
-        dashPart.Play();
-        yield return new WaitForSeconds(0.4f);
-        rb.velocity = Vector3.zero;
-        canWalk = true;
-        yield return new WaitForSeconds(0.6f);
-        canDash = true;             
-    }
-   
-
-  
+    } 
     private void Walk()
     {
        
@@ -64,14 +45,7 @@ public class PlayerController : MonoBehaviour
         moveDireciton = new Vector3(_Xspeed, 0, _Yspeed);
         moveDireciton.Normalize();
        
-        if(canDash == true && Input.GetKey(KeyCode.LeftShift) && concentrate == true)
-        {
-            StartCoroutine(Dashing(moveDireciton * 18));
-        }
-        if (canDash == true && Input.GetKey(KeyCode.LeftShift) && concentrate == false)
-        {
-            StartCoroutine(Dashing(transform.forward * 25));
-        }
+       
         if (moveDireciton.magnitude > 0.1f && concentrate == false)
         {
            
@@ -86,6 +60,15 @@ public class PlayerController : MonoBehaviour
         {
             rb.MovePosition(transform.position + (transform.forward * moveDireciton.magnitude)* moveSpeed * Time.deltaTime);
 
+        }
+
+        if (canDash == true && Input.GetKey(KeyCode.LeftShift) && concentrate == true)
+        {
+            StartCoroutine(Dashing(moveDireciton * 18));
+        }
+        if (canDash == true && Input.GetKey(KeyCode.LeftShift) && concentrate == false)
+        {
+            StartCoroutine(Dashing(transform.forward * 25));
         }
     }
     private void Animation()
@@ -136,5 +119,21 @@ public class PlayerController : MonoBehaviour
         canConcentrate = false;
         yield return new WaitForSeconds(0.3f);
         canConcentrate = true;
+    }
+
+    IEnumerator Dashing(Vector3 dir)
+    {
+
+        manaUI.mana -= minusManaDech;
+        canWalk = false;
+        canDash = false;
+        rb.AddForce(dir, ForceMode.Impulse);
+        animator.SetTrigger("Dash");
+        dashPart.Play();
+        yield return new WaitForSeconds(0.4f);
+        rb.velocity = Vector3.zero;
+        canWalk = true;
+        yield return new WaitForSeconds(0.6f);
+        canDash = true;
     }
 }
