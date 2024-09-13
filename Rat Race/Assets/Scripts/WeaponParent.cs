@@ -6,7 +6,7 @@ public class WeaponParent : MonoBehaviour
 {
     [SerializeField] GameObject meleTrigger;
     [SerializeField] Transform spp;
-    //[SerializeField] int damage = 30;
+    [SerializeField] public int damage = 30;
     [SerializeField] Animator anim;
 
     public bool canAttack = true;
@@ -20,6 +20,7 @@ public class WeaponParent : MonoBehaviour
     { 
         canAttack = false;
         GameObject mele = Instantiate(meleTrigger, spp.position, spp.rotation);
+        mele.GetComponent<WeaponTriger>().damage = damage;
         anim.SetTrigger("Attack");
         anim.SetBool("Attacking", true);
         yield return new WaitForSeconds(0.5f);

@@ -38,7 +38,8 @@ public class Knife : WeaponParent
     {
         yield return new WaitForSeconds(0.2f);
         GameObject trailSpawned = Instantiate(trail, trailSpp);
-        Instantiate(prefabBullet, spawnBullet.position, spawnBullet.rotation);
+        GameObject bullet = Instantiate(prefabBullet, spawnBullet.position, spawnBullet.rotation);
+        bullet.GetComponent<WeaponTriger>().damage = damage;
         yield return new WaitForSeconds(0.2f);
         trailSpawned.transform.parent = null;
         yield return new WaitForSeconds(2.5f);

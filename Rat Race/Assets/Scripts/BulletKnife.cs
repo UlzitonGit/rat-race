@@ -7,6 +7,7 @@ public class BulletKnife : MonoBehaviour
     private GameObject knifeScript;
     Knife knife;
     private Rigidbody rb;
+    [SerializeField] GameObject hitVfx;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,21 +28,17 @@ public class BulletKnife : MonoBehaviour
         rb.AddForce(transform.forward * knife.speedBullet);
         
     }
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (!collision.gameObject.CompareTag("Enemy"))
-        {
-            Destroy(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-            // тут типо - хп врагу, но пока врагов нету и ничего нету
-        }
-    }
+  
     IEnumerator TimeLife()
     {
         yield return new WaitForSecondsRealtime(knife.timeLifeBullet);
         Destroy(gameObject);
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Enemy"))
+        {
+            Instantiate(hitVfx, transform.position, transform.rotation);
+        }
     }
 }
