@@ -5,11 +5,14 @@ using UnityEngine;
 public class EnemyBullet : MonoBehaviour
 {
     [SerializeField] Vector3 dir;
-    [SerializeField] private int damage;
-    
+    [SerializeField] private float damage;
+    private GameObject ManaUIScript;
+    ManaUI manaUI;
     // Start is called before the first frame update
     void Start()
     {
+        ManaUIScript = GameObject.FindWithTag("ManaUI");
+        manaUI = ManaUIScript.GetComponent<ManaUI>();
         StartCoroutine(Destroying());
     }
 
@@ -23,7 +26,7 @@ public class EnemyBullet : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            FindObjectOfType<ManaUI>().mana -= damage;
+            manaUI.mana -= damage;
             Destroy(gameObject);
         }
     }

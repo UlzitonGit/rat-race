@@ -19,12 +19,13 @@ public class PlayerController : MonoBehaviour
 
     [Header("Mana")]
     [SerializeField] float minusManaDech;
-    [SerializeField] private GameObject ManaUIScript;
+    private GameObject ManaUIScript;
     private ManaUI manaUI;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         enemyDetecter = GetComponentInChildren<EnemyDetecter>();
+        ManaUIScript = GameObject.FindWithTag("ManaUI");
         manaUI = ManaUIScript.GetComponent<ManaUI>();
     }
 

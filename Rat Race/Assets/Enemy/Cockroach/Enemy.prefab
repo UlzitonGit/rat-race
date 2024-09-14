@@ -14,8 +14,7 @@ GameObject:
   - component: {fileID: 4569259056574659936}
   - component: {fileID: 2039823620798531265}
   - component: {fileID: 7466658251928609520}
-  - component: {fileID: 6202130964185719437}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -87,7 +86,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthBar: {fileID: 5760607880731414724}
-  health: 100
+  health: 70
 --- !u!195 &2039823620798531265
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -125,28 +124,13 @@ MonoBehaviour:
   isRaged: 0
   rageDistance: 20
   canAttack: 1
---- !u!95 &6202130964185719437
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1011398865259324395}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 1f3ad01ec23554346aff073f445356ce, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
+  spp:
+  - {fileID: 7568068977722177225}
+  - {fileID: 2952871309556392423}
+  - {fileID: 8909723289202407082}
+  - {fileID: 8093496346353588021}
+  bullet: {fileID: 3517822910360316826, guid: eab85bf67c5f9c849ab1ae6a5deae468, type: 3}
+  anim: {fileID: 1846350189790261191}
 --- !u!1 &1048435992585604599
 GameObject:
   m_ObjectHideFlags: 0
@@ -643,6 +627,7 @@ GameObject:
   - component: {fileID: 7663369376729310991}
   - component: {fileID: 5019313468172527547}
   - component: {fileID: 6535495718125952060}
+  - component: {fileID: 1846350189790261191}
   m_Layer: 0
   m_Name: Cylinder
   m_TagString: Untagged
@@ -741,3 +726,25 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+--- !u!95 &1846350189790261191
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8827925888689851472}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1f3ad01ec23554346aff073f445356ce, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

@@ -6,7 +6,7 @@ public class WeaponParent : MonoBehaviour
 {
     [SerializeField] GameObject meleTrigger;
     [SerializeField] Transform spp;
-    [SerializeField] public int damage = 30;
+    [SerializeField] public float damage;
     [SerializeField] Animator anim;
 
     public bool canAttack = true;

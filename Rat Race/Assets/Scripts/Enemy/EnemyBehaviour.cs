@@ -11,10 +11,12 @@ public class EnemyBehaviour : MonoBehaviour
     private Transform playerController;
     private float speed;
     public bool canAttack = true;
-
+    private GameObject Player;
+    
     private void Awake()
     {
-        playerController = FindObjectOfType<PlayerController>().GetComponent<Transform>();
+        Player = GameObject.FindWithTag("Player");
+        playerController = Player.GetComponent<Transform>();
         agent = GetComponent<NavMeshAgent>();
         speed = agent.speed;
     }
@@ -38,7 +40,8 @@ public class EnemyBehaviour : MonoBehaviour
             agent.speed = 0;
         }
     }
+    
 
-   
-   
+
+
 }

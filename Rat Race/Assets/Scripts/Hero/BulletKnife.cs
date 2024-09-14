@@ -11,7 +11,7 @@ public class BulletKnife : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        knifeScript = GameObject.Find("Hero");
+        knifeScript = GameObject.FindWithTag("Player");
         knife = knifeScript.GetComponent<Knife>();
         rb = GetComponent<Rigidbody>();
         StartCoroutine(TimeLife());

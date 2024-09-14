@@ -60,6 +60,7 @@ public class ManaUI : MonoBehaviour
             if(limitManaPlus >= maxMana)
             {
                 mana = maxMana;
+                StartPlusMana = true;
                 StopCoroutine(PlusManaInSecond());
             }
             else
