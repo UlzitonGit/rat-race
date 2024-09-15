@@ -55,7 +55,7 @@ public class ManaUI : MonoBehaviour
         while(mana < maxMana)
         {
             
-            yield return new WaitForSecondsRealtime(1);
+            yield return new WaitForSecondsRealtime(0.01f);
             float limitManaPlus = mana + plusManaSec;
             if(limitManaPlus >= maxMana)
             {
@@ -65,7 +65,7 @@ public class ManaUI : MonoBehaviour
             }
             else
             {
-                mana += plusManaSec;
+                mana += plusManaSec / 100;
 
             }
             

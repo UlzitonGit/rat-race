@@ -16,17 +16,19 @@ public class CockroachAttack : EnemyBehaviour
     // Update is called once per frame
     void Update()
     {
-        SearchForPlayer();
+        SearchForPlayer();      
         if(isRaged == true && canAttack == true)
         {
             StartCoroutine(Attacking());
         }
+
+        anim.SetBool("walk", isRaged);
     }
     IEnumerator Attacking()
     {
         canAttack = false;
         anim.SetTrigger("Attack");
-        yield return new WaitForSeconds(0.45f);
+        yield return new WaitForSeconds(0.6f);
         for (int i = 0; i < spp.Length; i++)
         {
             Instantiate(bullet, spp[i].transform.position, spp[i].transform.rotation);

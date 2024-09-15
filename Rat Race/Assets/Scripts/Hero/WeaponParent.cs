@@ -25,7 +25,7 @@ public class WeaponParent : MonoBehaviour
         anim.SetBool("Attacking", true);
         yield return new WaitForSeconds(0.5f);
         Destroy(mele);
-        yield return new WaitForSeconds(0.5f);
+       // yield return new WaitForSeconds(0.5f);
         anim.SetBool("Attacking",false);   
         canAttack = true;
     }
