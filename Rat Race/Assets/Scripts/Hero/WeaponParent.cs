@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class WeaponParent : MonoBehaviour
 {
-    [SerializeField] GameObject meleTrigger;
-    [SerializeField] Transform spp;
+    [SerializeField] private GameObject meleTrigger;
+    [SerializeField] private Transform spp;
     [SerializeField] public float damage;
-    [SerializeField] Animator anim;
+    [SerializeField] private Animator anim;
 
     public bool canAttack = true;
    

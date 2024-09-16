@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class CockroachAttack : EnemyBehaviour
 {
-    [SerializeField] Transform[] spp;
-    [SerializeField] GameObject bullet;
-    [SerializeField] Animator anim;
+    [SerializeField] private Transform[] spp;
+    [SerializeField] private GameObject bullet;
+    [SerializeField] private Animator anim;
     // Start is called before the first frame update
     void Start()
     {

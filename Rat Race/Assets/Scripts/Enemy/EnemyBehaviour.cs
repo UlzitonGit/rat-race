@@ -7,7 +7,7 @@ public class EnemyBehaviour : MonoBehaviour
 {
     public bool isRaged = false;
     [SerializeField] private float rageDistance = 20;
-    NavMeshAgent agent;
+    private NavMeshAgent agent;
     private Transform playerController;
     private float speed;
     public bool canAttack = true;

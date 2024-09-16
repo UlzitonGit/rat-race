@@ -5,15 +5,15 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    Rigidbody rb;
+    private Rigidbody rb;
     public float moveSpeed = 5f;
-    EnemyDetecter enemyDetecter;
+    private EnemyDetecter enemyDetecter;
     public bool concentrate = false;
-    [SerializeField] Animator animator;
-    [SerializeField] ParticleSystem dashPart;
-    int enemyToConcentrate = 0;
-    Vector3 moveDireciton;
-    bool canConcentrate = true;
+    [SerializeField] private Animator animator;
+    [SerializeField] private ParticleSystem dashPart;
+    private int enemyToConcentrate = 0;
+    private Vector3 moveDireciton;
+    private bool canConcentrate = true;
     public bool canWalk = true;
     public bool canDash = true;
 
