@@ -13,10 +13,16 @@ public class Bow : MonoBehaviour
     private bool isHolding = false;
     private int arrowsInAttack = 0;
     List<GameObject> fakeArrows = new List<GameObject>();
-    // Start is called before the first frame update
-   
 
-    // Update is called once per frame
+    [Header("Mana")]
+    private GameObject ManaUIScript;
+    private ManaUI manaUI;
+    [SerializeField] private float HitMinusMana;
+    private void Start()
+    {
+        ManaUIScript = GameObject.FindWithTag("ManaUI");
+        manaUI = ManaUIScript.GetComponent<ManaUI>();
+    }
     void Update()
     {
         if(Input.GetKey(KeyCode.Mouse0) && isHolding == false && canAttack == true)
@@ -42,7 +48,8 @@ public class Bow : MonoBehaviour
     }
     IEnumerator HoldingBow()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.9f);
+        manaUI.mana -= HitMinusMana;
         if(isHolding == true)
         {
             fakeArrows.Add((Instantiate(arrowEffect, spp[arrowsInAttack])));
@@ -54,7 +61,7 @@ public class Bow : MonoBehaviour
     IEnumerator RealodShot()
     {
         canAttack = false;
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1f);
         canAttack = true;
     }
     public void Switch()

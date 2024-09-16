@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class WeaponTriger : MonoBehaviour
@@ -13,5 +11,7 @@ public class WeaponTriger : MonoBehaviour
             other.GetComponent<EnemyHealth>().GetDamage(damage);
             Destroy(gameObject);
         }
+        
+       
     }
 }

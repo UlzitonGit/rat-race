@@ -14,6 +14,7 @@ public class Arrow : MonoBehaviour
     void Update()
     {
         transform.Translate(dir * speed * Time.deltaTime);
+        
     }
     
 }

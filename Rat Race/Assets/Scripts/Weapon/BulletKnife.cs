@@ -14,7 +14,7 @@ public class BulletKnife : MonoBehaviour
         knifeScript = GameObject.FindWithTag("Player");
         knife = knifeScript.GetComponent<Knife>();
         rb = GetComponent<Rigidbody>();
-        StartCoroutine(TimeLife());
+        
     }
 
     // Update is called once per frame
@@ -27,12 +27,6 @@ public class BulletKnife : MonoBehaviour
     {
         rb.AddForce(transform.forward * knife.speedBullet);
         
-    }
-  
-    IEnumerator TimeLife()
-    {
-        yield return new WaitForSecondsRealtime(knife.timeLifeBullet);
-        Destroy(gameObject);
     }
     private void OnTriggerEnter(Collider other)
     {

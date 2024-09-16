@@ -1,14 +1,19 @@
 using System.Collections;
-using System.Collections.Generic;
+
+
 using UnityEngine;
 
 public class Destroying : MonoBehaviour
 {
     [SerializeField] float duration;
-   
+    private void Start()
+    {
+        StartCoroutine(Destroy());
+    }
+
     IEnumerator Destroy()
     {
-        yield return new WaitForSeconds(duration);
+        yield return new WaitForSecondsRealtime(duration);
         Destroy(gameObject);
     }
 }
