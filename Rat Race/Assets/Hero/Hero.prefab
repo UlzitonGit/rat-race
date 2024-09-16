@@ -5266,7 +5266,7 @@ MonoBehaviour:
   spawnBullet: {fileID: 2716273884300824889}
   prefabBullet: {fileID: 4994684628410747729, guid: 78db13bd909a22748993aed9bbd8a8b8,
     type: 3}
-  speedBullet: 9
+  speedBullet: 15
   timeLifeBullet: 0.7
   knifeDamage: 25
   enemy:
