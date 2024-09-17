@@ -8,7 +8,7 @@ public class Knife : MonoBehaviour
     public Transform spawnBullet;
     [SerializeField] private GameObject prefabBullet;
     public float speedBullet;
-    public float timeLifeBullet;
+    
 
     [Header("Hit")]
     [SerializeField] private float knifeDamage;
@@ -19,7 +19,7 @@ public class Knife : MonoBehaviour
     
     [SerializeField] private float sphereRadius;
 
-    [SerializeField] private bool _considerObstacles;
+    
     
     
    
@@ -32,27 +32,39 @@ public class Knife : MonoBehaviour
     [Header("Effects")]
     [SerializeField] GameObject trail;
     [SerializeField] Transform trailSpp;
-
-    [Header("WeaponParent")]
     //[SerializeField] private GameObject meleTrigger;
     //[SerializeField] private Transform spp;
-    [SerializeField] public float damage;
+    
     [SerializeField] private Animator anim;
 
-    public bool canAttack = true;
+    [HideInInspector] public bool canAttack = true;
 
-    
+    [Header("Ability")]
+
+    [SerializeField] private float KD1Ability;
+    [SerializeField] private float minusMana1Ability;
+
+    private EnemyDetecter enemyDetecter;
+    private PlayerController playerController;
+    private GameObject NearEnemyGameOb;
+    private Transform NearEnemyPoint;
+
+    private bool can1Ablty = true;
     
     void Start()
     {
         ManaUIScript = GameObject.FindWithTag("ManaUI");
          manaUI = ManaUIScript.GetComponent<ManaUI>();
+        enemyDetecter = GetComponentInChildren<EnemyDetecter>();
+        playerController = GetComponent<PlayerController>();
+        
     }
 
     
     void Update()
     {
         
+        KnifeAbility1();
         if (Input.GetKey(KeyCode.Mouse0) && canAttack == true)
         {
             AttackMele();
@@ -83,10 +95,24 @@ public class Knife : MonoBehaviour
             }            
         }
     }
-    void OnDrawGizmos()
+    private void KnifeAbility1()
     {
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawSphere(overlapPoint.position, sphereRadius);       
+        if (Input.GetKey(KeyCode.X) && playerController.concentrate && can1Ablty)
+        {
+            NearEnemyGameOb = enemyDetecter.enemies[playerController.enemyToConcentrate];
+            NearEnemyPoint = NearEnemyGameOb.transform.Find("1KnifeAbility");
+            transform.position = NearEnemyPoint.position;
+            manaUI.mana -= minusMana1Ability;
+            StartCoroutine(FirstAbility());
+        }
+    }
+    
+    
+    IEnumerator FirstAbility()
+    {
+        can1Ablty = false;
+        yield return new WaitForSeconds(KD1Ability);
+        can1Ablty = true;
     }
     IEnumerator Attacking()
     {
@@ -95,7 +121,7 @@ public class Knife : MonoBehaviour
         //mele.GetComponent<WeaponTriger>().damage = damage;
         anim.SetTrigger("Attack");
         anim.SetBool("Attacking", true);
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1f);
         //Destroy(mele);
         // yield return new WaitForSeconds(0.5f);
         anim.SetBool("Attacking", false);
@@ -106,11 +132,16 @@ public class Knife : MonoBehaviour
         yield return new WaitForSeconds(0.2f);
         GameObject trailSpawned = Instantiate(trail, trailSpp);
         GameObject bullet = Instantiate(prefabBullet, spawnBullet.position, spawnBullet.rotation);
-        bullet.GetComponent<WeaponTriger>().damage = damage;
+        //bullet.GetComponent<WeaponTriger>().damage = damage;
         yield return new WaitForSeconds(0.2f);
         trailSpawned.transform.parent = null;
         yield return new WaitForSeconds(0.5f);
         Destroy(trailSpawned);
 
+    }
+    void OnDrawGizmos()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawSphere(overlapPoint.position, sphereRadius);       
     }
 }

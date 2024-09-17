@@ -8,14 +8,14 @@ public class PlayerController : MonoBehaviour
     private Rigidbody rb;
     public float moveSpeed = 5f;
     private EnemyDetecter enemyDetecter;
-    public bool concentrate = false;
+    [HideInInspector] public bool concentrate = false;
     [SerializeField] private Animator animator;
     [SerializeField] private ParticleSystem dashPart;
-    private int enemyToConcentrate = 0;
+    [HideInInspector] public int enemyToConcentrate = 0;
     private Vector3 moveDireciton;
     private bool canConcentrate = true;
-    public bool canWalk = true;
-    public bool canDash = true;
+    [HideInInspector] public bool canWalk = true;
+    [HideInInspector] public bool canDash = true;
 
     [Header("Mana")]
     [SerializeField] float minusManaDech;
@@ -27,6 +27,7 @@ public class PlayerController : MonoBehaviour
         enemyDetecter = GetComponentInChildren<EnemyDetecter>();
         ManaUIScript = GameObject.FindWithTag("ManaUI");
         manaUI = ManaUIScript.GetComponent<ManaUI>();
+
     }
 
     // Update is called once per frame

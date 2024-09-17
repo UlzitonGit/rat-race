@@ -5,12 +5,12 @@ using UnityEngine.AI;
 
 public class EnemyBehaviour : MonoBehaviour
 {
-    public bool isRaged = false;
+    [HideInInspector] public bool isRaged = false;
     [SerializeField] private float rageDistance = 20;
     private NavMeshAgent agent;
     private Transform playerController;
     private float speed;
-    public bool canAttack = true;
+    [HideInInspector] public bool canAttack = true;
     private GameObject Player;
     
     private void Awake()
