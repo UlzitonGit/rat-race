@@ -8,7 +8,7 @@ public class EnemyHealth : MonoBehaviour
     private float currentEnemyHealth;
     private GameObject EnemyDetecterScript;
     EnemyDetecter detecter;
-    
+    FightingZone zone;
     // Start is called before the first frame update
     void Awake()
     {
@@ -28,10 +28,19 @@ public class EnemyHealth : MonoBehaviour
         //print(currentEnemyHealth);
         if(currentEnemyHealth <= 0)
         {
+            zone.minusEnemy(gameObject);
             detecter.enemies.Remove(gameObject);
             Destroy(gameObject);
         }
     }
-   
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("FightZone"))
+        {
+            zone = other.GetComponent<FightingZone>();
+            zone.PlusEnemy(gameObject);
+        }
+    }
+
 
 }

@@ -15,6 +15,7 @@ public class BulletLauncher : MonoBehaviour
     [SerializeField] private LayerMask enemy;
     [SerializeField] private LayerMask player;
     [SerializeField] private LayerMask obstacles;
+    [SerializeField] private GameObject explosionVFX;
 
     private Transform overlapPoint;
 
@@ -83,6 +84,7 @@ public class BulletLauncher : MonoBehaviour
                 manaUI.mana -= damagePlayerExplosion;
             }
         }
+        Instantiate(explosionVFX, gameObject.transform.position, Quaternion.identity);
         Destroy(gameObject);
     }
     IEnumerator Fly()
