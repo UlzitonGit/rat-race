@@ -6,7 +6,7 @@ public class CockroachAttack : EnemyBehaviour
 {
     [SerializeField] private Transform[] spp;
     [SerializeField] private GameObject bullet;
-    [SerializeField] private Animator anim;
+    [SerializeField] public Animator anim;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,7 +17,7 @@ public class CockroachAttack : EnemyBehaviour
     void Update()
     {
         SearchForPlayer();      
-        if(isRaged == true && canAttack == true)
+        if(isRaged == true && canAttack == true && isActive == true)
         {
             StartCoroutine(Attacking());
         }

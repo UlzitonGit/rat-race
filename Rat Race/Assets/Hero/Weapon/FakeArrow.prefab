@@ -4843,7 +4843,7 @@ GameObject:
   - component: {fileID: 5845582628830461453}
   - component: {fileID: 4668851975553584937}
   m_Layer: 0
-  m_Name: BulletKnifeEffect
+  m_Name: FakeArrow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

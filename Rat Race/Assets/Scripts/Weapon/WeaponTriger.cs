@@ -8,7 +8,7 @@ public class WeaponTriger : MonoBehaviour
     {
         if (other.CompareTag("Enemy"))
         {
-            other.GetComponent<EnemyHealth>().GetDamage(damage);
+            other.GetComponent<EnemyBehaviour>().GetDamage(damage);
             Destroy(gameObject);
         }
         

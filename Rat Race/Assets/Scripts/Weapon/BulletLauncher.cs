@@ -69,7 +69,7 @@ public class BulletLauncher : MonoBehaviour
             if (!ObstaclesBeforEnemy)
             {
                 
-                overlapEnemy[i].GetComponent<EnemyHealth>().GetDamage(damageExplosion);
+                overlapEnemy[i].GetComponent<EnemyBehaviour>().GetDamage(damageExplosion);
                 
             }
         }

@@ -91,7 +91,7 @@ public class Knife : MonoBehaviour
             if (!ObstaclesBeforEnemy)
             {
                 Debug.Log("SwordDamage");
-                overlapEnemy[i].GetComponent<EnemyHealth>().GetDamage(knifeDamage);
+                overlapEnemy[i].GetComponent<EnemyBehaviour>().GetDamage(knifeDamage);
             }            
         }
     }

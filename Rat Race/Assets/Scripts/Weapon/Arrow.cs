@@ -5,8 +5,9 @@ using UnityEngine;
 public class Arrow : MonoBehaviour
 {
     [SerializeField] private Vector3 dir;
-   
+    [SerializeField] private GameObject fakeArrow;
     [SerializeField] private float speed;
+    [SerializeField] private bool isChain = false;
     // Start is called before the first frame update
   
 
@@ -16,5 +17,24 @@ public class Arrow : MonoBehaviour
         transform.Translate(dir * speed * Time.deltaTime);
         
     }
-    
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Enemy"))
+        {
+            if(!isChain)
+            {
+                GameObject arrow = Instantiate(fakeArrow, transform.position, transform.rotation);
+                other.GetComponent<EnemyBehaviour>().arrows++;
+                arrow.transform.SetParent(other.GetComponent<EnemyBehaviour>().arrowPos, true);
+                arrow.transform.localPosition = new Vector3(arrow.transform.localPosition.x, 0, arrow.transform.localPosition.z);
+            }
+            if (isChain)
+            {
+               
+                other.GetComponent<EnemyBehaviour>().StunnByArrow();
+                Destroy(gameObject);
+             
+            }
+        }
+    }
 }

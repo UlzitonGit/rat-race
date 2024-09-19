@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
     [HideInInspector] public int enemyToConcentrate = 0;
     private Vector3 moveDireciton;
     private bool canConcentrate = true;
+    
     [HideInInspector] public bool canWalk = true;
     [HideInInspector] public bool canDash = true;
 

@@ -5,8 +5,10 @@ using UnityEngine;
 public class Bow : MonoBehaviour
 {
     [SerializeField] private GameObject arrow;
+    [SerializeField] private GameObject chainArrow;
     [SerializeField] private GameObject arrowEffect;
     [SerializeField] private Transform[] spp;
+    [SerializeField] private int manaForFirstSkill = 150;
     
     [SerializeField] private Animator anim;
     private bool canAttack = true;
@@ -18,6 +20,7 @@ public class Bow : MonoBehaviour
     private GameObject ManaUIScript;
     private ManaUI manaUI;
     [SerializeField] private float HitMinusMana;
+    bool firstSkill = true;
     private void Start()
     {
         ManaUIScript = GameObject.FindWithTag("ManaUI");
@@ -44,7 +47,19 @@ public class Bow : MonoBehaviour
             StartCoroutine(RealodShot());
             fakeArrows.Clear();
         }
+        if(firstSkill == true && Input.GetKey(KeyCode.X))
+        {
+            StartCoroutine(Stunning());
+        } 
         anim.SetBool("AimBow", isHolding);
+    }
+    IEnumerator Stunning()
+    {
+        firstSkill = false;
+        manaUI.mana -= manaForFirstSkill;
+        Instantiate(chainArrow, spp[0].position, spp[0].rotation);
+        yield return new WaitForSeconds(3);
+        firstSkill = true;
     }
     IEnumerator HoldingBow()
     {

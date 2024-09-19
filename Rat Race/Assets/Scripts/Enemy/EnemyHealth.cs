@@ -5,6 +5,8 @@ public class EnemyHealth : MonoBehaviour
 {
     [SerializeField] Image healthBar;
     [SerializeField] public float health;
+    [SerializeField] public Transform arrowPos;
+
     private float currentEnemyHealth;
     private GameObject EnemyDetecterScript;
     EnemyDetecter detecter;
