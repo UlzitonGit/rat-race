@@ -18,7 +18,7 @@ MonoBehaviour:
     m_Value: 0
   intensity:
     m_OverrideState: 1
-    m_Value: 0.274
+    m_Value: 0.295
   response:
     m_OverrideState: 0
     m_Value: 0.8
@@ -43,22 +43,22 @@ MonoBehaviour:
     m_Value: 1
   threshold:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 0.56
   intensity:
     m_OverrideState: 1
-    m_Value: 1.63
+    m_Value: 0.47
   scatter:
-    m_OverrideState: 0
-    m_Value: 0.7
+    m_OverrideState: 1
+    m_Value: 0.311
   clamp:
-    m_OverrideState: 0
-    m_Value: 65472
+    m_OverrideState: 1
+    m_Value: 65470.59
   tint:
-    m_OverrideState: 0
-    m_Value: {r: 1, g: 1, b: 1, a: 1}
+    m_OverrideState: 1
+    m_Value: {r: 1, g: 0.94466054, b: 0.6462264, a: 1}
   highQualityFiltering:
-    m_OverrideState: 0
-    m_Value: 0
+    m_OverrideState: 1
+    m_Value: 1
   downscale:
     m_OverrideState: 0
     m_Value: 0
@@ -93,7 +93,7 @@ MonoBehaviour:
     m_Value: {x: 0.5, y: 0.5}
   intensity:
     m_OverrideState: 1
-    m_Value: 0.296
+    m_Value: 0.354
   smoothness:
     m_OverrideState: 1
     m_Value: 0.4
@@ -115,10 +115,10 @@ MonoBehaviour:
   active: 1
   temperature:
     m_OverrideState: 1
-    m_Value: 10.4
+    m_Value: -11.4
   tint:
     m_OverrideState: 1
-    m_Value: -7.4
+    m_Value: 1.6
 --- !u!114 &-5074479939485542109
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -134,13 +134,41 @@ MonoBehaviour:
   active: 1
   shadows:
     m_OverrideState: 1
-    m_Value: {r: 0.19824438, g: 0.12549019, b: 0.30980393, a: 1}
+    m_Value: {r: 0.3018868, g: 0.27453077, b: 0.21502315, a: 1}
   highlights:
     m_OverrideState: 1
-    m_Value: {r: 0.8584906, g: 0.800906, b: 0.6924617, a: 1}
+    m_Value: {r: 1, g: 0.9674433, b: 0.8443396, a: 1}
   balance:
     m_OverrideState: 1
-    m_Value: 4.4
+    m_Value: -9.1
+--- !u!114 &-5048633014359394786
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66f335fb1ffd8684294ad653bf1c7564, type: 3}
+  m_Name: ColorAdjustments
+  m_EditorClassIdentifier: 
+  active: 1
+  postExposure:
+    m_OverrideState: 1
+    m_Value: -1.69
+  contrast:
+    m_OverrideState: 1
+    m_Value: -9.4
+  colorFilter:
+    m_OverrideState: 1
+    m_Value: {r: 1.4528302, g: 1.3767622, b: 1.1855643, a: 1}
+  hueShift:
+    m_OverrideState: 0
+    m_Value: 0
+  saturation:
+    m_OverrideState: 0
+    m_Value: 0
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -160,6 +188,9 @@ MonoBehaviour:
   - {fileID: -5074479939485542109}
   - {fileID: -7911858155271532076}
   - {fileID: -5799574421453420205}
+  - {fileID: 3393430309463416214}
+  - {fileID: 8289740126772265332}
+  - {fileID: -5048633014359394786}
 --- !u!114 &849379129802519247
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -200,3 +231,59 @@ MonoBehaviour:
   maxNits:
     m_OverrideState: 0
     m_Value: 1000
+--- !u!114 &3393430309463416214
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bd486065ce11414fa40e631affc4900, type: 3}
+  m_Name: ProbeVolumesOptions
+  m_EditorClassIdentifier: 
+  active: 1
+  normalBias:
+    m_OverrideState: 0
+    m_Value: 0.33
+  viewBias:
+    m_OverrideState: 0
+    m_Value: 0
+  scaleBiasWithMinProbeDistance:
+    m_OverrideState: 0
+    m_Value: 0
+  samplingNoise:
+    m_OverrideState: 0
+    m_Value: 0.1
+  animateSamplingNoise:
+    m_OverrideState: 0
+    m_Value: 1
+  leakReductionMode:
+    m_OverrideState: 0
+    m_Value: 1
+  minValidDotProductValue:
+    m_OverrideState: 0
+    m_Value: 0.1
+  occlusionOnlyReflectionNormalization:
+    m_OverrideState: 0
+    m_Value: 1
+--- !u!114 &8289740126772265332
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb60a22f311433c4c962b888d1393f88, type: 3}
+  m_Name: PaniniProjection
+  m_EditorClassIdentifier: 
+  active: 1
+  distance:
+    m_OverrideState: 1
+    m_Value: 0.051
+  cropToFit:
+    m_OverrideState: 1
+    m_Value: 1
