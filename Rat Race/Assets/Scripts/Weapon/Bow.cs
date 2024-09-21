@@ -58,12 +58,12 @@ public class Bow : MonoBehaviour
         firstSkill = false;
         manaUI.mana -= manaForFirstSkill;
         Instantiate(chainArrow, spp[0].position, spp[0].rotation);
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(7);
         firstSkill = true;
     }
     IEnumerator HoldingBow()
     {
-        yield return new WaitForSeconds(0.9f);
+        yield return new WaitForSeconds(0.7f);
         manaUI.mana -= HitMinusMana;
         if(isHolding == true)
         {

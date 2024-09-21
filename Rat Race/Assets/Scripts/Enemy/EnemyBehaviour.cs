@@ -9,11 +9,12 @@ public class EnemyBehaviour : MonoBehaviour
     [HideInInspector] public bool isRaged = false;
     [SerializeField] private float rageDistance = 20;
     private NavMeshAgent agent;
-    private Transform playerController;
+    [HideInInspector] public Transform playerController;
+    private GameObject Player;
     private float speed;
     [HideInInspector] public bool canAttack = true;
-    private GameObject Player;
-    [SerializeField] Image healthBar;
+    [HideInInspector] public float distance;
+    
     [SerializeField] public float health;
     [SerializeField] ParticleSystem chainEffect;
     [SerializeField] public Transform arrowPos;
@@ -45,7 +46,13 @@ public class EnemyBehaviour : MonoBehaviour
             return;
         }
         else agent.speed = speed;
-        float distance = Vector3.Distance(gameObject.transform.position, playerController.position);
+
+
+
+        distance = Vector3.Distance(gameObject.transform.position, playerController.position);
+
+
+
         if (distance < rageDistance)
         {
             agent.SetDestination(playerController.position);
@@ -76,11 +83,9 @@ public class EnemyBehaviour : MonoBehaviour
     public void GetDamage(float damage)
     {
         currentEnemyHealth -= damage;
-        healthBar.fillAmount = currentEnemyHealth / health;
-        //print(currentEnemyHealth);
         if (currentEnemyHealth <= 0)
         {
-            zone.minusEnemy(gameObject);
+            //zone.minusEnemy(gameObject);
             detecter.enemies.Remove(gameObject);
             Destroy(gameObject);
         }
