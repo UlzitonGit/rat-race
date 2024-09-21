@@ -14,7 +14,7 @@ public class Knife : MonoBehaviour
     [SerializeField] private float knifeDamage;
     [SerializeField] private LayerMask enemy;
     [SerializeField] private LayerMask obstacles;
-
+    [SerializeField] private float durationBetweenAttacks = 0.3f;
     [SerializeField] private Transform overlapPoint;
     
     [SerializeField] private float sphereRadius;
@@ -119,9 +119,10 @@ public class Knife : MonoBehaviour
         canAttack = false;
         //GameObject mele = Instantiate(meleTrigger, spp.position, spp.rotation);
         //mele.GetComponent<WeaponTriger>().damage = damage;
+        playerController.AttackDash();
         anim.SetTrigger("Attack");
         anim.SetBool("Attacking", true);
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(durationBetweenAttacks);
         //Destroy(mele);
         // yield return new WaitForSeconds(0.5f);
         anim.SetBool("Attacking", false);

@@ -5,7 +5,7 @@ using UnityEngine;
 public class Bow : MonoBehaviour
 {
     [SerializeField] private GameObject arrow;
-    [SerializeField] private GameObject chainArrow;
+   
     [SerializeField] private GameObject arrowEffect;
     [SerializeField] private Transform[] spp;
     [SerializeField] private int manaForFirstSkill = 150;
@@ -20,9 +20,11 @@ public class Bow : MonoBehaviour
     private GameObject ManaUIScript;
     private ManaUI manaUI;
     [SerializeField] private float HitMinusMana;
+    private PlayerController playerController;
     bool firstSkill = true;
     private void Start()
     {
+        playerController = GetComponent<PlayerController>();
         ManaUIScript = GameObject.FindWithTag("ManaUI");
         manaUI = ManaUIScript.GetComponent<ManaUI>();
     }
@@ -52,12 +54,25 @@ public class Bow : MonoBehaviour
             StartCoroutine(Stunning());
         } 
         anim.SetBool("AimBow", isHolding);
+        if(isHolding == true) playerController.currentSpeed = playerController.walkWithBowSpeed;
+        if (isHolding == false) playerController.currentSpeed = playerController.moveSpeed;
     }
     IEnumerator Stunning()
     {
         firstSkill = false;
-        manaUI.mana -= manaForFirstSkill;
-        Instantiate(chainArrow, spp[0].position, spp[0].rotation);
+        canAttack = false;
+        playerController.canWalk = false;
+        anim.SetTrigger("FirstSpellBow");
+        anim.SetBool("Attacking", true);
+        EnemyBehaviour[] enemies = FindObjectsOfType<EnemyBehaviour>();
+        for (int i = 0;i < enemies.Length;i++)
+        {
+            if (enemies[i].arrows > 0) enemies[i].StunnByArrow();
+        }
+        yield return new WaitForSeconds(1f);
+        canAttack = true;
+        anim.SetBool("Attacking", false);
+        playerController.canWalk = true;
         yield return new WaitForSeconds(7);
         firstSkill = true;
     }
@@ -65,6 +80,7 @@ public class Bow : MonoBehaviour
     {
         yield return new WaitForSeconds(0.7f);
         manaUI.mana -= HitMinusMana;
+        
         if(isHolding == true)
         {
             fakeArrows.Add((Instantiate(arrowEffect, spp[arrowsInAttack])));

@@ -18,6 +18,7 @@ public class EnemyBehaviour : MonoBehaviour
     [SerializeField] public float health;
     [SerializeField] ParticleSystem chainEffect;
     [SerializeField] public Transform arrowPos;
+    private Rigidbody rb;
     public bool isActive = true;
     private float currentEnemyHealth;
     private GameObject EnemyDetecterScript;
@@ -26,6 +27,7 @@ public class EnemyBehaviour : MonoBehaviour
     public int arrows = 0;
     private void Awake()
     {
+        rb = GetComponent<Rigidbody>();
         Player = GameObject.FindWithTag("Player");
         playerController = Player.GetComponent<Transform>();
         agent = GetComponent<NavMeshAgent>();
@@ -71,6 +73,11 @@ public class EnemyBehaviour : MonoBehaviour
         if (arrows > 4) arrows = 4;
         if(arrows == 0) arrows = 1;
         StartCoroutine(Stunning(arrows * 0.75f));
+        GameObject[] arrowsGM = arrowPos.GetComponentsInChildren<GameObject>();
+        for (int i = 0; i < arrowsGM.Length; i++)
+        {
+            Destroy(arrowsGM[i]);
+        }
 
     }
     IEnumerator Stunning(float delay)
@@ -78,6 +85,15 @@ public class EnemyBehaviour : MonoBehaviour
         chainEffect.Play();
         isActive = false;
         yield return new WaitForSeconds(delay);
+        isActive = true;
+    }
+    IEnumerator Discarding()
+    {
+        agent.enabled = false;
+        isActive = false;
+        rb.AddForce(transform.forward * -10f, ForceMode.Impulse);
+        yield return new WaitForSeconds(1f);
+        agent.enabled = true;
         isActive = true;
     }
     public void GetDamage(float damage)
@@ -97,6 +113,10 @@ public class EnemyBehaviour : MonoBehaviour
             zone = other.GetComponent<FightingZone>();
             zone.PlusEnemy(gameObject);
         }
+    }
+    public void Discard()
+    {
+        StartCoroutine(Discarding());
     }
 
 

@@ -7,9 +7,11 @@ public class PlayerController : MonoBehaviour
 {
     private Rigidbody rb;
     public float moveSpeed = 5f;
+    [HideInInspector] public float currentSpeed = 5;
     private EnemyDetecter enemyDetecter;
     [HideInInspector] public bool concentrate = false;
     [SerializeField] private Animator animator;
+    [SerializeField] public float walkWithBowSpeed = 1.5f;
     [SerializeField] private ParticleSystem dashPart;
     [HideInInspector] public int enemyToConcentrate = 0;
     private Vector3 moveDireciton;
@@ -24,6 +26,7 @@ public class PlayerController : MonoBehaviour
     private ManaUI manaUI;
     void Start()
     {
+        currentSpeed = moveSpeed;
         rb = GetComponent<Rigidbody>();
         enemyDetecter = GetComponentInChildren<EnemyDetecter>();
         ManaUIScript = GameObject.FindWithTag("ManaUI");
@@ -43,8 +46,8 @@ public class PlayerController : MonoBehaviour
     {
        
         if (canWalk == false) return;
-        float _Xspeed = Input.GetAxis("Horizontal") * moveSpeed;
-        float _Yspeed = Input.GetAxis("Vertical") * moveSpeed;
+        float _Xspeed = Input.GetAxis("Horizontal") * currentSpeed;
+        float _Yspeed = Input.GetAxis("Vertical") * currentSpeed;
         moveDireciton = new Vector3(_Xspeed, 0, _Yspeed);
         moveDireciton.Normalize();
        
@@ -53,7 +56,7 @@ public class PlayerController : MonoBehaviour
         {
            
             Quaternion toRot = Quaternion.LookRotation(moveDireciton.ToIso(), Vector3.up);
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, toRot, 360 * Time.deltaTime);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, toRot, 900 * Time.deltaTime);
         }
         if (concentrate)
         {
@@ -61,17 +64,17 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            rb.MovePosition(transform.position + (transform.forward * moveDireciton.magnitude)* moveSpeed * Time.deltaTime);
+            rb.MovePosition(transform.position + (transform.forward * moveDireciton.magnitude)* currentSpeed * Time.deltaTime);
 
         }
 
         if (canDash == true && Input.GetKey(KeyCode.LeftShift) && concentrate == true)
         {
-            StartCoroutine(Dashing(moveDireciton * 18));
+            StartCoroutine(Dashing(moveDireciton * 22));
         }
         if (canDash == true && Input.GetKey(KeyCode.LeftShift) && concentrate == false)
         {
-            StartCoroutine(Dashing(transform.forward * 25));
+            StartCoroutine(Dashing(transform.forward * 35));
         }
     }
     private void Animation()
@@ -83,6 +86,14 @@ public class PlayerController : MonoBehaviour
         //animator.SetFloat("Input", localMove.magnitude);
         animator.SetFloat("Horizontal", localMove.z);
         animator.SetFloat("Vertical", localMove.x);
+    }
+    public void AttackDash()
+    {
+        StartCoroutine(AttackDashing(transform.forward * 25));
+    }
+    public void Discard()
+    {
+        StartCoroutine(Discarding());
     }
     private void Concentration()
     {
@@ -117,6 +128,15 @@ public class PlayerController : MonoBehaviour
 
         }
     }
+    IEnumerator Discarding()
+    {      
+        canWalk = false;      
+        rb.AddForce(transform.forward * -35, ForceMode.Impulse);       
+        yield return new WaitForSeconds(0.3f);
+        rb.velocity = Vector3.zero;
+        canWalk = true;       
+       
+    }
     IEnumerator ReloadingConcentration()
     {
         canConcentrate = false;
@@ -124,7 +144,7 @@ public class PlayerController : MonoBehaviour
         canConcentrate = true;
     }
 
-    IEnumerator Dashing(Vector3 dir)
+     IEnumerator Dashing(Vector3 dir)
     {
 
         manaUI.mana -= minusManaDech;
@@ -133,10 +153,20 @@ public class PlayerController : MonoBehaviour
         rb.AddForce(dir, ForceMode.Impulse);
         animator.SetTrigger("Dash");
         dashPart.Play();
-        yield return new WaitForSeconds(0.4f);
+        yield return new WaitForSeconds(0.2f);
         rb.velocity = Vector3.zero;
         canWalk = true;
         yield return new WaitForSeconds(0.6f);
         canDash = true;
     }
+     IEnumerator AttackDashing(Vector3 dir)
+    {       
+        canWalk = false;      
+        rb.AddForce(dir, ForceMode.Impulse);
+        yield return new WaitForSeconds(0.1f);
+        rb.velocity = Vector3.zero;
+        canWalk = true;
+        
+    }
+
 }

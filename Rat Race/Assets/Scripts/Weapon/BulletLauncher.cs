@@ -16,7 +16,7 @@ public class BulletLauncher : MonoBehaviour
     [SerializeField] private LayerMask player;
     [SerializeField] private LayerMask obstacles;
     [SerializeField] private GameObject explosionVFX;
-
+    [SerializeField] private bool isFirstSkill = false;
     private Transform overlapPoint;
 
     [SerializeField] private float sphereRadius;
@@ -70,7 +70,8 @@ public class BulletLauncher : MonoBehaviour
             {
                 
                 overlapEnemy[i].GetComponent<EnemyBehaviour>().GetDamage(damageExplosion);
-                
+                if(isFirstSkill == true) overlapEnemy[i].GetComponent<EnemyBehaviour>().Discard();
+
             }
         }
         Collider[] overlapPlayer = Physics.OverlapSphere(overlapPoint.position, sphereRadius, player);
@@ -82,7 +83,9 @@ public class BulletLauncher : MonoBehaviour
             if (!ObstaclesBeforEnemy)
             {
                 manaUI.mana -= damagePlayerExplosion;
+                if(isFirstSkill == true) overlapPlayer[i].GetComponent<PlayerController>().Discard();
             }
+
         }
         Instantiate(explosionVFX, gameObject.transform.position, Quaternion.identity);
         Destroy(gameObject);

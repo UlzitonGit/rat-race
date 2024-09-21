@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 326536208265500511}
   - component: {fileID: -1328457420793330493}
   m_Layer: 0
-  m_Name: BulletLauncher
+  m_Name: BulletLauncher FirstSkill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -134,9 +134,9 @@ MonoBehaviour:
   obstacles:
     serializedVersion: 2
     m_Bits: 0
-  explosionVFX: {fileID: 3523599666862614777, guid: 4b701f72038c06442a4f61c9eaaafce1,
+  explosionVFX: {fileID: 3523599666862614777, guid: 6f3eefe715f04a3449968c96bf9d4337,
     type: 3}
-  isFirstSkill: 0
+  isFirstSkill: 1
   sphereRadius: 7
   damagePlayerExplosion: 100
 --- !u!1 &7193502355099384709

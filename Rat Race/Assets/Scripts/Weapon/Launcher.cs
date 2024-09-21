@@ -7,12 +7,14 @@ public class Launcher : MonoBehaviour
     [Header("Bullet")]
     public Transform spawnBullet;
     [SerializeField] private GameObject prefabBullet;
+    [SerializeField] private GameObject firstSkillBullet;
     private bool canAttack = true;
 
     [Header("Mana")]
     [SerializeField] private float HitMinusMana;
     private GameObject ManaUIScript;
     private ManaUI manaUI;
+    private bool canUseFirstSkill = true;
     private void Start()
     {
         ManaUIScript = GameObject.FindWithTag("ManaUI");
@@ -30,11 +32,23 @@ public class Launcher : MonoBehaviour
             Instantiate(prefabBullet, spawnBullet.position, spawnBullet.rotation);
             StartCoroutine(RealodShot());
         }
+        if (Input.GetKey(KeyCode.X) && canUseFirstSkill)
+        {
+            manaUI.mana -= HitMinusMana;
+            Instantiate(firstSkillBullet, spawnBullet.position, spawnBullet.rotation);
+            StartCoroutine(RealodFirstSkill());
+        }
     }
     IEnumerator RealodShot()
     {
         canAttack = false;
         yield return new WaitForSecondsRealtime(2f);
         canAttack = true;
+    }
+    IEnumerator RealodFirstSkill()
+    {
+        canUseFirstSkill = false;
+        yield return new WaitForSecondsRealtime(2f);
+        canUseFirstSkill = true;
     }
 }
