@@ -22,7 +22,7 @@ public class WeaponTrigerEnemy : MonoBehaviour
         {
             if(debaf)
             {
-                
+                playerController.DebafApathy();
             }
             manaUI.mana -= damage;
             Destroy(gameObject);

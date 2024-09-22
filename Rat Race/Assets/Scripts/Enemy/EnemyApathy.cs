@@ -62,7 +62,7 @@ public class EnemyApathy : EnemyBehaviour
     {
         canSpecialSkill = false;
         isActive = false;
-        yield return new WaitForSecondsRealtime(0.6f);
+        yield return new WaitForSecondsRealtime(0.3f);
         Instantiate(BulletSpecial, sppBulletSpecial.position, sppBulletSpecial.rotation);
         yield return new WaitForSecondsRealtime(0.3f);
         isActive = true;

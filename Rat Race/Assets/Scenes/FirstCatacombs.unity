@@ -5300,6 +5300,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 7499520192514945468, guid: 8f4f55a63b8c68a4c8621d797c506e00,
+        type: 3}
+      propertyPath: m_Constraints
+      value: 116
+      objectReference: {fileID: 0}
     - target: {fileID: 9163067497706048324, guid: 8f4f55a63b8c68a4c8621d797c506e00,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -27746,50 +27751,6 @@ MonoBehaviour:
   BulletSpecial: {fileID: 4994684628410747729, guid: 2e24fd3ab211cde47b0dac8d905a3673,
     type: 3}
   sppBulletSpecial: {fileID: 40118415}
---- !u!23 &2259356547095815363
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3454671495454794475}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RayTracingAccelStructBuildFlagsOverride: 0
-  m_RayTracingAccelStructBuildFlags: 1
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &3454671495454794475
 GameObject:
   m_ObjectHideFlags: 0
@@ -27801,7 +27762,6 @@ GameObject:
   - component: {fileID: 7495853179044084814}
   - component: {fileID: 8603202122371354207}
   - component: {fileID: 1460236652824756142}
-  - component: {fileID: 2259356547095815363}
   - component: {fileID: 2197152132166196057}
   - component: {fileID: 8603202122371354208}
   m_Layer: 7
@@ -27870,6 +27830,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 363751469122441734, guid: a552ef8a30dce6246a9e1562e671f6d7,
+        type: 3}
+      propertyPath: speedDebafApathy
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 1977512851884429500, guid: a552ef8a30dce6246a9e1562e671f6d7,
         type: 3}
       propertyPath: manaInMoment
@@ -28134,7 +28099,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 112
+  m_Constraints: 116
   m_CollisionDetection: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

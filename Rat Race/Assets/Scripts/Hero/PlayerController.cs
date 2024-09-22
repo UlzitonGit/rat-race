@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
 {
     private Rigidbody rb;
     public float moveSpeed = 5f;
+    [SerializeField] private float speedDebafApathy;
     [HideInInspector] public float currentSpeed = 5;
     private EnemyDetecter enemyDetecter;
     [HideInInspector] public bool concentrate = false;
@@ -24,6 +25,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float minusManaDech;
     private GameObject ManaUIScript;
     private ManaUI manaUI;
+
+    [HideInInspector] public bool HaveDebaf;
     void Start()
     {
         currentSpeed = moveSpeed;
@@ -127,6 +130,18 @@ public class PlayerController : MonoBehaviour
             StartCoroutine(ReloadingConcentration());
 
         }
+    }
+    public void DebafApathy()
+    {
+        StartCoroutine(DebafSlowdown());
+    }
+    IEnumerator DebafSlowdown()
+    {
+        HaveDebaf = true;
+        currentSpeed = speedDebafApathy;
+        yield return new WaitForSeconds(3);
+        currentSpeed = moveSpeed;
+        HaveDebaf = false;
     }
     IEnumerator Discarding()
     {      

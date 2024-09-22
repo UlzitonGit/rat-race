@@ -55,8 +55,8 @@ public class Bow : MonoBehaviour
             StartCoroutine(Stunning());
         } 
         anim.SetBool("AimBow", isHolding);
-        if(isHolding == true) playerController.currentSpeed = playerController.walkWithBowSpeed;
-        if (isHolding == false) playerController.currentSpeed = playerController.moveSpeed;
+        if(isHolding == true && !playerController.HaveDebaf) playerController.currentSpeed = playerController.walkWithBowSpeed;
+        if (isHolding == false && !playerController.HaveDebaf) playerController.currentSpeed = playerController.moveSpeed;
     }
     IEnumerator Stunning()
     {
