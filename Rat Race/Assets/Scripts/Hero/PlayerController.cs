@@ -162,9 +162,10 @@ public class PlayerController : MonoBehaviour
      IEnumerator AttackDashing(Vector3 dir)
     {       
         canWalk = false;      
-        rb.AddForce(dir, ForceMode.Impulse);
+        rb.AddForce(dir / 3.3f, ForceMode.Impulse);
         yield return new WaitForSeconds(0.1f);
         rb.velocity = Vector3.zero;
+        yield return new WaitForSeconds(0.6f);
         canWalk = true;
         
     }

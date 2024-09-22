@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class FightingZone : MonoBehaviour
 {
-    private bool allEnemyKilled = false;
+    //private bool allEnemyKilled = false;
     public List<GameObject> enemies = new List<GameObject>();
     [SerializeField] private GameObject[] area;
     private void Update()

@@ -73,10 +73,9 @@ public class EnemyBehaviour : MonoBehaviour
         if (arrows > 4) arrows = 4;
         if(arrows == 0) arrows = 1;
         StartCoroutine(Stunning(arrows * 0.75f));
-        GameObject[] arrowsGM = arrowPos.GetComponentsInChildren<GameObject>();
-        for (int i = 0; i < arrowsGM.Length; i++)
+        foreach (Transform child in arrowPos.transform)
         {
-            Destroy(arrowsGM[i]);
+            Destroy(child.gameObject);
         }
 
     }

@@ -8,7 +8,7 @@ public class Bow : MonoBehaviour
    
     [SerializeField] private GameObject arrowEffect;
     [SerializeField] private Transform[] spp;
-    [SerializeField] private int manaForFirstSkill = 150;
+    [SerializeField] private float manaForFirstSkill;
     
     [SerializeField] private Animator anim;
     private bool canAttack = true;
@@ -51,6 +51,7 @@ public class Bow : MonoBehaviour
         }
         if(firstSkill == true && Input.GetKey(KeyCode.X))
         {
+            manaUI.mana -= manaForFirstSkill;
             StartCoroutine(Stunning());
         } 
         anim.SetBool("AimBow", isHolding);
