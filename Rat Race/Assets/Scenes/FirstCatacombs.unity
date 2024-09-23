@@ -27830,81 +27830,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 363751469122441734, guid: a552ef8a30dce6246a9e1562e671f6d7,
-        type: 3}
-      propertyPath: speedDebafApathy
-      value: 1.5
-      objectReference: {fileID: 0}
     - target: {fileID: 1977512851884429500, guid: a552ef8a30dce6246a9e1562e671f6d7,
         type: 3}
       propertyPath: manaInMoment
       value: 
       objectReference: {fileID: 257099779}
-    - target: {fileID: 1983174210195786500, guid: a552ef8a30dce6246a9e1562e671f6d7,
-        type: 3}
-      propertyPath: m_Height
-      value: 2.3296528
-      objectReference: {fileID: 0}
-    - target: {fileID: 1983174210195786500, guid: a552ef8a30dce6246a9e1562e671f6d7,
-        type: 3}
-      propertyPath: m_Radius
-      value: 0.2582798
-      objectReference: {fileID: 0}
-    - target: {fileID: 1983174210195786500, guid: a552ef8a30dce6246a9e1562e671f6d7,
-        type: 3}
-      propertyPath: m_Center.y
-      value: 0.1648264
-      objectReference: {fileID: 0}
-    - target: {fileID: 1983174210195786500, guid: a552ef8a30dce6246a9e1562e671f6d7,
-        type: 3}
-      propertyPath: m_Center.z
-      value: 0.06604195
-      objectReference: {fileID: 0}
-    - target: {fileID: 2377615994603024004, guid: a552ef8a30dce6246a9e1562e671f6d7,
-        type: 3}
-      propertyPath: TrailModule.mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2377615994603024004, guid: a552ef8a30dce6246a9e1562e671f6d7,
-        type: 3}
-      propertyPath: TrailModule.enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2377615994603024004, guid: a552ef8a30dce6246a9e1562e671f6d7,
-        type: 3}
-      propertyPath: InitialModule.startSize.scalar
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2377615994603024004, guid: a552ef8a30dce6246a9e1562e671f6d7,
-        type: 3}
-      propertyPath: InitialModule.startLifetime.scalar
-      value: 0.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 2377615994603024004, guid: a552ef8a30dce6246a9e1562e671f6d7,
-        type: 3}
-      propertyPath: InitialModule.startColor.maxColor.b
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2377615994603024004, guid: a552ef8a30dce6246a9e1562e671f6d7,
-        type: 3}
-      propertyPath: InitialModule.startColor.maxColor.g
-      value: 0.7008203
-      objectReference: {fileID: 0}
-    - target: {fileID: 2377615994603024004, guid: a552ef8a30dce6246a9e1562e671f6d7,
-        type: 3}
-      propertyPath: InitialModule.startColor.maxColor.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2377615994603024004, guid: a552ef8a30dce6246a9e1562e671f6d7,
-        type: 3}
-      propertyPath: InitialModule.gravityModifier.scalar
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3740939951935750597, guid: a552ef8a30dce6246a9e1562e671f6d7,
-        type: 3}
-      propertyPath: durationBetweenAttacks
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4404774903345532237, guid: a552ef8a30dce6246a9e1562e671f6d7,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -27960,21 +27890,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hero
       objectReference: {fileID: 0}
-    - target: {fileID: 5758282124229805974, guid: a552ef8a30dce6246a9e1562e671f6d7,
-        type: 3}
-      propertyPath: m_Materials.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5758282124229805974, guid: a552ef8a30dce6246a9e1562e671f6d7,
-        type: 3}
-      propertyPath: 'm_Materials.Array.data[0]'
-      value: 
-      objectReference: {fileID: 2100000, guid: 174dc2b53b7a96845a6850f73ff3f51f, type: 2}
-    - target: {fileID: 5758282124229805974, guid: a552ef8a30dce6246a9e1562e671f6d7,
-        type: 3}
-      propertyPath: 'm_Materials.Array.data[1]'
-      value: 
-      objectReference: {fileID: 2100000, guid: 174dc2b53b7a96845a6850f73ff3f51f, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
