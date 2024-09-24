@@ -14937,6 +14937,7 @@ GameObject:
   - component: {fileID: 8692845886488212575}
   - component: {fileID: 2803147859279890333}
   - component: {fileID: 4642361590453549631}
+  - component: {fileID: 2568404932600846525}
   m_Layer: 6
   m_Name: Hero
   m_TagString: Player
@@ -14988,9 +14989,9 @@ CapsuleCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.2582798
-  m_Height: 2.3296528
+  m_Height: 2.1205559
   m_Direction: 1
-  m_Center: {x: 0, y: 0.1648264, z: 0.06604195}
+  m_Center: {x: 0, y: 0.26937485, z: 0.06604195}
 --- !u!54 &7840227336720752840
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -15074,6 +15075,7 @@ MonoBehaviour:
   anim: {fileID: 5893257342765911971}
   canAttack: 1
   KD1Ability: 4
+  KD2Ability: 0
   minusMana1Ability: 85
 --- !u!114 &8692845886488212575
 MonoBehaviour:
@@ -15132,6 +15134,32 @@ MonoBehaviour:
   bowModel: {fileID: 8133239101595795137}
   launcherModel: {fileID: 4023760309355263881}
   animator: {fileID: 5893257342765911971}
+--- !u!143 &2568404932600846525
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4906464500408883474}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Height: 2
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &4958474013393151324
 GameObject:
   m_ObjectHideFlags: 0

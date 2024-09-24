@@ -42,6 +42,7 @@ public class Knife : MonoBehaviour
     [Header("Ability")]
 
     [SerializeField] private float KD1Ability;
+    [SerializeField] private float KD2Ability;
     [SerializeField] private float minusMana1Ability;
 
     private EnemyDetecter enemyDetecter;
@@ -50,7 +51,7 @@ public class Knife : MonoBehaviour
     private Transform NearEnemyPoint;
 
     private bool can1Ablty = true;
-    
+    private bool can2Ablty = true;
     void Start()
     {
         ManaUIScript = GameObject.FindWithTag("ManaUI");
@@ -65,6 +66,7 @@ public class Knife : MonoBehaviour
     {
         
         KnifeAbility1();
+        KnifeAbility2();
         if (Input.GetKey(KeyCode.Mouse0) && canAttack == true)
         {
             AttackMele();
@@ -106,13 +108,26 @@ public class Knife : MonoBehaviour
             StartCoroutine(FirstAbility());
         }
     }
-    
-    
+    private void KnifeAbility2()
+    {
+        if (Input.GetKey(KeyCode.Z) && playerController.concentrate && can1Ablty)
+        {
+            enemyDetecter.enemies[playerController.enemyToConcentrate].GetComponent<EnemyBehaviour>().Mark();
+            StartCoroutine(SecondAbility());
+        }
+    }
+
     IEnumerator FirstAbility()
     {
         can1Ablty = false;
         yield return new WaitForSeconds(KD1Ability);
         can1Ablty = true;
+    }
+    IEnumerator SecondAbility()
+    {
+        can2Ablty = false;
+        yield return new WaitForSeconds(KD2Ability);
+        can2Ablty = true;
     }
     IEnumerator Attacking()
     {

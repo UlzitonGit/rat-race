@@ -14,7 +14,7 @@ public class EnemyBehaviour : MonoBehaviour
     private float speed;
     [HideInInspector] public bool canAttack = true;
     [HideInInspector] public float distance;
-    
+    [SerializeField] ParticleSystem markeEffect;
     [SerializeField] public float health;
     [SerializeField] ParticleSystem chainEffect;
     [SerializeField] public Transform arrowPos;
@@ -25,6 +25,8 @@ public class EnemyBehaviour : MonoBehaviour
     EnemyDetecter detecter;
     FightingZone zone;
     public int arrows = 0;
+    private float damageMark = 0;
+    private bool isMarked = false;
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -95,9 +97,20 @@ public class EnemyBehaviour : MonoBehaviour
         agent.enabled = true;
         isActive = true;
     }
+    IEnumerator Marking()
+    {
+        isMarked = true;
+        damageMark = 0;
+        markeEffect.Play();
+        yield return new WaitForSeconds(4);
+        GetDamage(damageMark);
+        isMarked = false;
+        damageMark = 0;
+    }
     public void GetDamage(float damage)
     {
         currentEnemyHealth -= damage;
+        if (isMarked == true) damageMark += damage;
         if (currentEnemyHealth <= 0)
         {
             //zone.minusEnemy(gameObject);
@@ -117,6 +130,9 @@ public class EnemyBehaviour : MonoBehaviour
     {
         StartCoroutine(Discarding());
     }
-
+    public void Mark()
+    {
+        StartCoroutine(Marking());
+    }
 
 }

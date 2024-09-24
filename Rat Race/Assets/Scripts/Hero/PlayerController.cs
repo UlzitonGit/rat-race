@@ -6,6 +6,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     private Rigidbody rb;
+    private CharacterController characterController;
     public float moveSpeed = 5f;
     [SerializeField] private float speedDebafApathy;
     [HideInInspector] public float currentSpeed = 5;
@@ -29,6 +30,7 @@ public class PlayerController : MonoBehaviour
     [HideInInspector] public bool HaveDebaf;
     void Start()
     {
+        characterController = GetComponent<CharacterController>();
         currentSpeed = moveSpeed;
         rb = GetComponent<Rigidbody>();
         enemyDetecter = GetComponentInChildren<EnemyDetecter>();
@@ -63,11 +65,11 @@ public class PlayerController : MonoBehaviour
         }
         if (concentrate)
         {
-            rb.velocity = new Vector3(_Xspeed, rb.velocity.y, _Yspeed);
+            characterController.Move(new Vector3(_Xspeed, 0, _Yspeed)  * Time.deltaTime);
         }
         else
         {
-            rb.MovePosition(transform.position + (transform.forward * moveDireciton.magnitude)* currentSpeed * Time.deltaTime);
+            characterController.Move(transform.forward * moveDireciton.magnitude * currentSpeed  * Time.deltaTime);
 
         }
 
@@ -92,7 +94,7 @@ public class PlayerController : MonoBehaviour
     }
     public void AttackDash()
     {
-        StartCoroutine(AttackDashing(transform.forward * 25));
+        StartCoroutine(AttackDashing());
     }
     public void Discard()
     {
@@ -104,6 +106,7 @@ public class PlayerController : MonoBehaviour
         {
             if (enemyToConcentrate > enemyDetecter.enemies.Count - 1) enemyToConcentrate = 0;
             transform.LookAt(enemyDetecter.enemies[enemyToConcentrate].transform);
+            
         }
         if (enemyDetecter.enemies.Count == 0 && concentrate == true)
         {
@@ -145,10 +148,12 @@ public class PlayerController : MonoBehaviour
     }
     IEnumerator Discarding()
     {      
+        characterController.enabled = false;
         canWalk = false;      
         rb.AddForce(transform.forward * -35, ForceMode.Impulse);       
         yield return new WaitForSeconds(0.3f);
         rb.velocity = Vector3.zero;
+        characterController.enabled = true;
         canWalk = true;       
        
     }
@@ -164,24 +169,28 @@ public class PlayerController : MonoBehaviour
 
         manaUI.mana -= minusManaDech;
         canWalk = false;
+        characterController.enabled = false;
         canDash = false;
         rb.AddForce(dir, ForceMode.Impulse);
         animator.SetTrigger("Dash");
         dashPart.Play();
         yield return new WaitForSeconds(0.2f);
+        characterController.enabled = true;
         rb.velocity = Vector3.zero;
         canWalk = true;
         yield return new WaitForSeconds(0.6f);
         canDash = true;
     }
-     IEnumerator AttackDashing(Vector3 dir)
+     IEnumerator AttackDashing()
     {       
-        canWalk = false;      
-        rb.AddForce(dir / 3.3f, ForceMode.Impulse);
-        yield return new WaitForSeconds(0.1f);
-        rb.velocity = Vector3.zero;
+     
+        currentSpeed = speedDebafApathy;
+        //rb.AddForce(transform.forward / 3.3f, ForceMode.Impulse);
+        yield return new WaitForSeconds(0.3f);
+        currentSpeed = moveSpeed;
+        //rb.velocity = Vector3.zero;
         yield return new WaitForSeconds(0.6f);
-        canWalk = true;
+        
         
     }
 
