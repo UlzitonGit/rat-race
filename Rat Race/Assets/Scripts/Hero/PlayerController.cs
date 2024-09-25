@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    private Rigidbody rb;
-    private CharacterController characterController;
+    [HideInInspector] public Rigidbody rb;
+    [HideInInspector] public CharacterController characterController;
     public float moveSpeed = 5f;
     [SerializeField] private float speedDebafApathy;
     [HideInInspector] public float currentSpeed = 5;
@@ -26,7 +26,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float minusManaDech;
     private GameObject ManaUIScript;
     private ManaUI manaUI;
-
+    private float _falling;
+    private float gravity = -9.81f;
+    [SerializeField] private float gravityMult = 3;
     [HideInInspector] public bool HaveDebaf;
     void Start()
     {
@@ -44,6 +46,7 @@ public class PlayerController : MonoBehaviour
     {
         Walk();
         Concentration();
+        ApplyGravity();
         Animation();
        
     } 
@@ -65,11 +68,11 @@ public class PlayerController : MonoBehaviour
         }
         if (concentrate)
         {
-            characterController.Move(new Vector3(_Xspeed, 0, _Yspeed)  * Time.deltaTime);
+            characterController.Move(new Vector3(_Xspeed, _falling, _Yspeed)  * Time.deltaTime);
         }
         else
         {
-            characterController.Move(transform.forward * moveDireciton.magnitude * currentSpeed  * Time.deltaTime);
+            characterController.Move(new Vector3(transform.forward.x, _falling, transform.forward.z) * moveDireciton.magnitude * currentSpeed  * Time.deltaTime);
 
         }
 
@@ -81,6 +84,11 @@ public class PlayerController : MonoBehaviour
         {
             StartCoroutine(Dashing(transform.forward * 35));
         }
+    }
+    private void ApplyGravity()
+    {
+        if(moveDireciton.magnitude == 0) characterController.Move( new Vector3(0, _falling, 0)* currentSpeed * Time.deltaTime);
+        _falling = gravity * gravityMult * Time.deltaTime;
     }
     private void Animation()
     {
@@ -105,7 +113,8 @@ public class PlayerController : MonoBehaviour
         if (enemyDetecter.enemies.Count != 0 && concentrate == true)
         {
             if (enemyToConcentrate > enemyDetecter.enemies.Count - 1) enemyToConcentrate = 0;
-            transform.LookAt(enemyDetecter.enemies[enemyToConcentrate].transform);
+            Vector3 dir = enemyDetecter.enemies[enemyToConcentrate].transform.position;
+            transform.LookAt(new Vector3(dir.x, transform.position.y, dir.z));
             
         }
         if (enemyDetecter.enemies.Count == 0 && concentrate == true)

@@ -101,10 +101,12 @@ public class Knife : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.X) && playerController.concentrate && can1Ablty)
         {
+            playerController.characterController.enabled = false;
             NearEnemyGameOb = enemyDetecter.enemies[playerController.enemyToConcentrate];
             NearEnemyPoint = NearEnemyGameOb.transform.Find("1KnifeAbility");
             transform.position = NearEnemyPoint.position;
             manaUI.mana -= minusMana1Ability;
+            playerController.characterController.enabled = true;
             StartCoroutine(FirstAbility());
         }
     }

@@ -25,7 +25,7 @@ public class BulletKnife : MonoBehaviour
 
     private void FlyBullet()
     {
-        rb.AddForce(transform.forward * knife.speedBullet);
+        transform.Translate(new Vector3(0, 0, knife.speedBullet) * Time.deltaTime);
         
     }
     private void OnTriggerEnter(Collider other)
