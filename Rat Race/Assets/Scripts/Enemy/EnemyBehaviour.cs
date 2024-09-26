@@ -17,7 +17,12 @@ public class EnemyBehaviour : MonoBehaviour
     [SerializeField] ParticleSystem markeEffect;
     [SerializeField] public float health;
     [SerializeField] ParticleSystem chainEffect;
+    [SerializeField] private LayerMask enemy;
+   
     [SerializeField] public Transform arrowPos;
+    [SerializeField] private ParticleSystem secondBowPart;
+    [SerializeField] private ParticleSystem secondBowPartMark;
+    [SerializeField] private GameObject secondBow;
     private Rigidbody rb;
     public bool isActive = true;
     private float currentEnemyHealth;
@@ -27,6 +32,8 @@ public class EnemyBehaviour : MonoBehaviour
     public int arrows = 0;
     private float damageMark = 0;
     private bool isMarked = false;
+    private bool bowSecond = false;
+    private GameObject bowSecondDamage;
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -99,17 +106,46 @@ public class EnemyBehaviour : MonoBehaviour
     }
     IEnumerator Marking()
     {
-        isMarked = true;
-        damageMark = 0;
-        markeEffect.Play();
-        yield return new WaitForSeconds(4);
-        GetDamage(damageMark);
-        isMarked = false;
-        damageMark = 0;
+        if(isMarked == false)
+        {
+            isMarked = true;
+            damageMark = 0;
+            markeEffect.Play();
+            yield return new WaitForSeconds(4);
+            print(damageMark);
+            GetDamage(damageMark);
+            isMarked = false;
+            damageMark = 0;
+        }
+       
+    }
+    IEnumerator DamageOther()
+    {
+        if (bowSecond == false)
+        {
+            secondBowPartMark.Play();
+            print("yes");
+            bowSecond = true;           
+            yield return new WaitForSeconds(6);           
+            bowSecond = false;
+           
+        }
+
+    }
+    private void OverlapAttack(float damage)
+    {
+        print(damage);
+        secondBowPart.Play();
+        bowSecondDamage= Instantiate(secondBow, transform.position, Quaternion.identity);
+        bowSecondDamage.GetComponent<WeaponTriger>().damage = damage;
+        bowSecondDamage.GetComponent<WeaponTriger>().parent = gameObject;
+
+        
     }
     public void GetDamage(float damage)
     {
         currentEnemyHealth -= damage;
+        if (bowSecond == true) OverlapAttack(damage);
         if (isMarked == true) damageMark += damage;
         if (currentEnemyHealth <= 0)
         {
@@ -134,5 +170,8 @@ public class EnemyBehaviour : MonoBehaviour
     {
         StartCoroutine(Marking());
     }
-
+    public void BowSecond()
+    {
+        StartCoroutine(DamageOther());
+    }
 }

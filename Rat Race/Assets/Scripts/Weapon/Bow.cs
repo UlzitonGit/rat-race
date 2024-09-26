@@ -9,11 +9,13 @@ public class Bow : MonoBehaviour
     [SerializeField] private GameObject arrowEffect;
     [SerializeField] private Transform[] spp;
     [SerializeField] private float manaForFirstSkill;
-    
+    [SerializeField] private float manaForSecondSkill;
     [SerializeField] private Animator anim;
     private bool canAttack = true;
+    private bool secondSkill = true;
     private bool isHolding = false;
     private int arrowsInAttack = 0;
+    private EnemyDetecter enemyDetecter;
     List<GameObject> fakeArrows = new List<GameObject>();
 
     [Header("Mana")]
@@ -26,6 +28,7 @@ public class Bow : MonoBehaviour
     {
         playerController = GetComponent<PlayerController>();
         ManaUIScript = GameObject.FindWithTag("ManaUI");
+        enemyDetecter = FindFirstObjectByType<EnemyDetecter>();
         manaUI = ManaUIScript.GetComponent<ManaUI>();
     }
     void Update()
@@ -53,7 +56,12 @@ public class Bow : MonoBehaviour
         {
             manaUI.mana -= manaForFirstSkill;
             StartCoroutine(Stunning());
-        } 
+        }
+        if (secondSkill == true && Input.GetKey(KeyCode.Z))
+        {
+            manaUI.mana -= manaForSecondSkill;
+            StartCoroutine(SecondSkill());
+        }
         anim.SetBool("AimBow", isHolding);
         if(isHolding == true && !playerController.HaveDebaf) playerController.currentSpeed = playerController.walkWithBowSpeed;
         if (isHolding == false && !playerController.HaveDebaf) playerController.currentSpeed = playerController.moveSpeed;
@@ -78,6 +86,13 @@ public class Bow : MonoBehaviour
         playerController.rb.isKinematic = false;
         yield return new WaitForSeconds(7);
         firstSkill = true;
+    }
+    IEnumerator SecondSkill()
+    {
+        secondSkill = false;
+        enemyDetecter.enemies[playerController.enemyToConcentrate].GetComponent<EnemyBehaviour>().BowSecond();
+        yield return new WaitForSeconds(8);
+        secondSkill = true; 
     }
     IEnumerator HoldingBow()
     {

@@ -27,6 +27,7 @@ public class Arrow : MonoBehaviour
                 other.GetComponent<EnemyBehaviour>().arrows++;
                 arrow.transform.SetParent(other.GetComponent<EnemyBehaviour>().arrowPos, true);
                 arrow.transform.localPosition = new Vector3(arrow.transform.localPosition.x, 0, arrow.transform.localPosition.z);
+                Destroy(gameObject);
             }
             if (isChain)
             {

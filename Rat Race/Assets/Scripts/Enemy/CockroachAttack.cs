@@ -33,7 +33,7 @@ public class CockroachAttack : EnemyBehaviour
         {
             Instantiate(bullet, spp[i].transform.position, spp[i].transform.rotation);
         }
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(2f);
         canAttack = true;
     }
 }
