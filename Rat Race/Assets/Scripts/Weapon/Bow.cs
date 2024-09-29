@@ -71,7 +71,7 @@ public class Bow : MonoBehaviour
         firstSkill = false;
         canAttack = false;
         playerController.characterController.enabled = false;
-        playerController.rb.isKinematic = true;
+        //playerController.rb.isKinematic = true;
         anim.SetTrigger("FirstSpellBow");
         anim.SetBool("Attacking", true);
         EnemyBehaviour[] enemies = FindObjectsOfType<EnemyBehaviour>();
@@ -83,7 +83,7 @@ public class Bow : MonoBehaviour
         canAttack = true;
         anim.SetBool("Attacking", false);
         playerController.characterController.enabled = true;
-        playerController.rb.isKinematic = false;
+        //playerController.rb.isKinematic = false;
         yield return new WaitForSeconds(7);
         firstSkill = true;
     }

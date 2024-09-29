@@ -4899,6 +4899,7 @@ Transform:
   - {fileID: 8926085634893620742}
   - {fileID: 1713197703921372648}
   - {fileID: 7799842969763060601}
+  - {fileID: 4111551738077546435}
   - {fileID: 4556784968731554436}
   - {fileID: 1195336717778596209}
   - {fileID: 4490734703882388578}
@@ -4981,7 +4982,7 @@ MonoBehaviour:
     type: 3}
   isActive: 1
   arrows: 0
-  attackPosition: {fileID: 7799842969763060601}
+  attackPosition: {fileID: 4111551738077546435}
   attackRadius: 3.5
   player:
     serializedVersion: 2
@@ -14870,6 +14871,37 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!1 &5469965163815803962
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4111551738077546435}
+  m_Layer: 0
+  m_Name: AttackPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4111551738077546435
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5469965163815803962}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.104, y: 1.594, z: 2.26}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 903279962869960575}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6076230280775433344
 GameObject:
   m_ObjectHideFlags: 0

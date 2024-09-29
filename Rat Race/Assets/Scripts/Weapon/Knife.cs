@@ -112,7 +112,7 @@ public class Knife : MonoBehaviour
     }
     private void KnifeAbility2()
     {
-        if (Input.GetKey(KeyCode.Z) && playerController.concentrate && can1Ablty)
+        if (Input.GetKey(KeyCode.C) && playerController.concentrate && can1Ablty)
         {
             enemyDetecter.enemies[playerController.enemyToConcentrate].GetComponent<EnemyBehaviour>().Mark();
             StartCoroutine(SecondAbility());

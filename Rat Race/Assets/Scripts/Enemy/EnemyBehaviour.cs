@@ -8,10 +8,10 @@ public class EnemyBehaviour : MonoBehaviour
 {
     [HideInInspector] public bool isRaged = false;
     [SerializeField] private float rageDistance = 20;
-    private NavMeshAgent agent;
+    [HideInInspector] public NavMeshAgent agent;
     [HideInInspector] public Transform playerController;
-    private GameObject Player;
-    private float speed;
+    [HideInInspector] public GameObject Player;
+    [HideInInspector] public float speed;
     [HideInInspector] public bool canAttack = true;
     [HideInInspector] public float distance;
     [SerializeField] ParticleSystem markeEffect;
@@ -25,7 +25,7 @@ public class EnemyBehaviour : MonoBehaviour
     [SerializeField] private GameObject secondBow;
     private Rigidbody rb;
     public bool isActive = true;
-    private float currentEnemyHealth;
+    [HideInInspector] public float currentEnemyHealth;
     private GameObject EnemyDetecterScript;
     EnemyDetecter detecter;
     FightingZone zone;
@@ -34,6 +34,7 @@ public class EnemyBehaviour : MonoBehaviour
     private bool isMarked = false;
     private bool bowSecond = false;
     private GameObject bowSecondDamage;
+    
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
