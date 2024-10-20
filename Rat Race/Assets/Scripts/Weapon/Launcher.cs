@@ -32,7 +32,7 @@ public class Launcher : MonoBehaviour
             Instantiate(prefabBullet, spawnBullet.position, spawnBullet.rotation);
             StartCoroutine(RealodShot());
         }
-        if (Input.GetKey(KeyCode.X) && canUseFirstSkill)
+        if (Input.GetKey(KeyCode.Z) && canUseFirstSkill)
         {
             manaUI.mana -= HitMinusMana;
             Instantiate(firstSkillBullet, spawnBullet.position, spawnBullet.rotation);

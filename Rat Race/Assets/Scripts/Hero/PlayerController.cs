@@ -60,7 +60,7 @@ public class PlayerController : MonoBehaviour
         moveDireciton.Normalize();
        
        
-        if (moveDireciton.magnitude > 0.1f && concentrate == false)
+        if (moveDireciton.magnitude > 0.1f && !concentrate)
         {
            
             Quaternion toRot = Quaternion.LookRotation(moveDireciton.ToIso(), Vector3.up);

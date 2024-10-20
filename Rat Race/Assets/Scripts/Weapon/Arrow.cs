@@ -8,8 +8,9 @@ public class Arrow : MonoBehaviour
     [SerializeField] private GameObject fakeArrow;
     [SerializeField] private float speed;
     [SerializeField] private bool isChain = false;
+    [SerializeField] private bool isThirdSkill = false;
     // Start is called before the first frame update
-  
+
 
     // Update is called once per frame
     void Update()
@@ -27,7 +28,12 @@ public class Arrow : MonoBehaviour
                 other.GetComponent<EnemyBehaviour>().arrows++;
                 arrow.transform.SetParent(other.GetComponent<EnemyBehaviour>().arrowPos, true);
                 arrow.transform.localPosition = new Vector3(arrow.transform.localPosition.x, 0, arrow.transform.localPosition.z);
-                Destroy(gameObject);
+                if(!isThirdSkill)
+                {
+                    Destroy(gameObject);
+
+                }
+                
             }
             if (isChain)
             {

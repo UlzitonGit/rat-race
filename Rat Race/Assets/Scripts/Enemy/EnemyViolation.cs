@@ -20,17 +20,28 @@ public class EnemyViolation : EnemyBehaviour
     [SerializeField] private float hitFromHand;
     private GameObject ManaUIScript;
     private ManaUI manaUI;
+    private bool isAgresiv = false;
     void Start()
     {
         ManaUIScript = GameObject.FindWithTag("ManaUI");
         manaUI = ManaUIScript.GetComponent<ManaUI>();
-        StartCoroutine(Aggression());
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        SearchForPlayer();
+        if (!isActive)
+        {
+            SearchForPlayer();
+            if (!isAgresiv)
+            {
+                isActive = true;
+                StartCoroutine(Aggression());
+
+            }
+        }
+        
         
         if (distance < distanceAttack && isActive)
         {

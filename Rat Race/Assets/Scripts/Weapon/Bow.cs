@@ -5,15 +5,20 @@ using UnityEngine;
 public class Bow : MonoBehaviour
 {
     [SerializeField] private GameObject arrow;
-   
+    [SerializeField] private GameObject arrowThirdSkill;
     [SerializeField] private GameObject arrowEffect;
     [SerializeField] private Transform[] spp;
-    [SerializeField] private float manaForFirstSkill;
-    [SerializeField] private float manaForSecondSkill;
+    
     [SerializeField] private Animator anim;
     private bool canAttack = true;
+
+
+    private bool firstSkill = true;
     private bool secondSkill = true;
+    private bool thirdSkill = true;
+
     private bool isHolding = false;
+    
     private int arrowsInAttack = 0;
     private EnemyDetecter enemyDetecter;
     List<GameObject> fakeArrows = new List<GameObject>();
@@ -23,7 +28,11 @@ public class Bow : MonoBehaviour
     private ManaUI manaUI;
     [SerializeField] private float HitMinusMana;
     private PlayerController playerController;
-    bool firstSkill = true;
+
+    [SerializeField] private float manaForFirstSkill;
+    [SerializeField] private float manaForSecondSkill;
+    [SerializeField] private float manaForThirdSkill;
+
     private void Start()
     {
         playerController = GetComponent<PlayerController>();
@@ -33,12 +42,32 @@ public class Bow : MonoBehaviour
     }
     void Update()
     {
-        if(Input.GetKey(KeyCode.Mouse0) && isHolding == false && canAttack == true)
+        Holding();
+        SpeedWithBow();
+        Skills();
+        
+    }
+    private void SpeedWithBow()
+    {
+        if (isHolding && !playerController.HaveDebaf)
+        {
+            playerController.currentSpeed = playerController.walkWithBowSpeed;
+        }
+
+        if (!isHolding && !playerController.HaveDebaf) 
+        {
+            playerController.currentSpeed = playerController.moveSpeed;
+        } 
+
+    }
+    private void Holding()
+    {
+        if(Input.GetKey(KeyCode.Mouse0) && !isHolding && canAttack )
         {
             isHolding = true;
             StartCoroutine(HoldingBow());
         }
-        if (Input.GetKeyUp(KeyCode.Mouse0) && isHolding == true || arrowsInAttack == 4)
+        if (Input.GetKeyUp(KeyCode.Mouse0) && isHolding || arrowsInAttack == 4)
         {
             isHolding = false;
             StopCoroutine(HoldingBow());
@@ -52,21 +81,30 @@ public class Bow : MonoBehaviour
             StartCoroutine(RealodShot());
             fakeArrows.Clear();
         }
-        if(firstSkill == true && Input.GetKey(KeyCode.X))
+        
+        anim.SetBool("AimBow", isHolding);
+
+    }
+    private void Skills()
+    {
+        if(firstSkill && Input.GetKey(KeyCode.Z))
         {
             manaUI.mana -= manaForFirstSkill;
-            StartCoroutine(Stunning());
+            StartCoroutine(FirstSkill());
         }
-        if (secondSkill == true && Input.GetKey(KeyCode.Z))
+        if (secondSkill && Input.GetKey(KeyCode.X))
         {
             manaUI.mana -= manaForSecondSkill;
             StartCoroutine(SecondSkill());
         }
-        anim.SetBool("AimBow", isHolding);
-        if(isHolding == true && !playerController.HaveDebaf) playerController.currentSpeed = playerController.walkWithBowSpeed;
-        if (isHolding == false && !playerController.HaveDebaf) playerController.currentSpeed = playerController.moveSpeed;
+        if (thirdSkill && Input.GetKey(KeyCode.C))
+        {
+            manaUI.mana -= manaForThirdSkill;
+            StartCoroutine(ThirdSkill());
+        }
+
     }
-    IEnumerator Stunning()
+    IEnumerator FirstSkill()
     {
         firstSkill = false;
         canAttack = false;
@@ -94,18 +132,25 @@ public class Bow : MonoBehaviour
         yield return new WaitForSeconds(8);
         secondSkill = true; 
     }
+    IEnumerator ThirdSkill()
+    {
+        thirdSkill = false;
+        Instantiate(arrowThirdSkill, spp[0].position, spp[0].rotation);
+        yield return new WaitForSeconds(6);
+        thirdSkill = true;
+    }
     IEnumerator HoldingBow()
     {
         yield return new WaitForSeconds(0.7f);
         manaUI.mana -= HitMinusMana;
         
-        if(isHolding == true)
+        if(isHolding)
         {
-            fakeArrows.Add((Instantiate(arrowEffect, spp[arrowsInAttack])));
+            fakeArrows.Add(Instantiate(arrowEffect, spp[arrowsInAttack]));
             arrowsInAttack++;
         }
      
-        if(isHolding == true && arrowsInAttack < 4) StartCoroutine(HoldingBow());
+        if(isHolding && arrowsInAttack < 4) StartCoroutine(HoldingBow());
     }
     IEnumerator RealodShot()
     {

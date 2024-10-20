@@ -67,7 +67,7 @@ public class Knife : MonoBehaviour
         
         KnifeAbility1();
         KnifeAbility2();
-        if (Input.GetKey(KeyCode.Mouse0) && canAttack == true)
+        if (Input.GetKey(KeyCode.Mouse0) && canAttack)
         {
             AttackMele();
             OverlapAttack();
@@ -78,7 +78,10 @@ public class Knife : MonoBehaviour
     }
     private void AttackMele()
     {
-        if (canAttack == false) return;
+        if (!canAttack)
+        {
+            return;
+        }
         StartCoroutine(Attacking());
     }
    
@@ -99,7 +102,7 @@ public class Knife : MonoBehaviour
     }
     private void KnifeAbility1()
     {
-        if (Input.GetKey(KeyCode.X) && playerController.concentrate && can1Ablty)
+        if (Input.GetKey(KeyCode.Z) && playerController.concentrate && can1Ablty)
         {
             playerController.characterController.enabled = false;
             NearEnemyGameOb = enemyDetecter.enemies[playerController.enemyToConcentrate];
@@ -112,7 +115,7 @@ public class Knife : MonoBehaviour
     }
     private void KnifeAbility2()
     {
-        if (Input.GetKey(KeyCode.C) && playerController.concentrate && can1Ablty)
+        if (Input.GetKey(KeyCode.X) && playerController.concentrate && can2Ablty)
         {
             enemyDetecter.enemies[playerController.enemyToConcentrate].GetComponent<EnemyBehaviour>().Mark();
             StartCoroutine(SecondAbility());

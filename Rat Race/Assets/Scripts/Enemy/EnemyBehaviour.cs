@@ -52,7 +52,7 @@ public class EnemyBehaviour : MonoBehaviour
 
     public void SearchForPlayer()
     {
-        if (isActive == false)
+        if (!isActive)
         {
             agent.speed = 0;
             return;
