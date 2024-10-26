@@ -44,7 +44,7 @@ public class Launcher : MonoBehaviour
             Instantiate(firstSkillBullet, spawnBullet.position, spawnBullet.rotation);
             StartCoroutine(RealodFirstSkill());
         }
-        if (Input.GetKey(KeyCode.C) && canUseSecondSkill)
+        if (Input.GetKey(KeyCode.X) && canUseSecondSkill)
         {
             manaUI.mana -= HitMinusManaSS;
             linkWall = Instantiate(SecondSkillsWall, spawnWall.position, spawnWall.rotation);
