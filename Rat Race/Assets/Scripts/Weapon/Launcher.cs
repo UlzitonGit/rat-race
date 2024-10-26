@@ -6,15 +6,21 @@ public class Launcher : MonoBehaviour
 {
     [Header("Bullet")]
     public Transform spawnBullet;
+    [SerializeField] private Transform spawnWall;
     [SerializeField] private GameObject prefabBullet;
     [SerializeField] private GameObject firstSkillBullet;
+    [SerializeField] private GameObject SecondSkillsWall;
+    [SerializeField] private GameObject linkWall;
     private bool canAttack = true;
 
     [Header("Mana")]
     [SerializeField] private float HitMinusMana;
+    [SerializeField] private float HitMinusManaFS;
+    [SerializeField] private float HitMinusManaSS;
     private GameObject ManaUIScript;
     private ManaUI manaUI;
     private bool canUseFirstSkill = true;
+    private bool canUseSecondSkill = true;
     private void Start()
     {
         ManaUIScript = GameObject.FindWithTag("ManaUI");
@@ -34,9 +40,16 @@ public class Launcher : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.Z) && canUseFirstSkill)
         {
-            manaUI.mana -= HitMinusMana;
+            manaUI.mana -= HitMinusManaFS;
             Instantiate(firstSkillBullet, spawnBullet.position, spawnBullet.rotation);
             StartCoroutine(RealodFirstSkill());
+        }
+        if (Input.GetKey(KeyCode.C) && canUseSecondSkill)
+        {
+            manaUI.mana -= HitMinusManaSS;
+            linkWall = Instantiate(SecondSkillsWall, spawnWall.position, spawnWall.rotation);
+            
+            StartCoroutine(RealodSecondSkill());
         }
     }
     IEnumerator RealodShot()
@@ -50,5 +63,17 @@ public class Launcher : MonoBehaviour
         canUseFirstSkill = false;
         yield return new WaitForSecondsRealtime(2f);
         canUseFirstSkill = true;
+    }
+    IEnumerator RealodSecondSkill()
+    {
+        canUseSecondSkill = false;
+        yield return new WaitForSecondsRealtime(3f);
+        if (linkWall != null)
+        {
+            Destroy(linkWall);
+        }
+
+        yield return new WaitForSecondsRealtime(7f);
+        canUseSecondSkill = true;
     }
 }

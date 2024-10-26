@@ -6378,6 +6378,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e67d5042c895ac94aa7ecf7aaa3311a9, type: 3}
+--- !u!4 &865539806 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 853544556563343483, guid: a552ef8a30dce6246a9e1562e671f6d7,
+    type: 3}
+  m_PrefabInstance: {fileID: 7736326453387465268}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &879555213 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4677571737611520, guid: e67d5042c895ac94aa7ecf7aaa3311a9,
@@ -13809,21 +13815,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 363751469122441734, guid: a552ef8a30dce6246a9e1562e671f6d7,
-        type: 3}
-      propertyPath: gravityMult
-      value: 15
-      objectReference: {fileID: 0}
     - target: {fileID: 1977512851884429500, guid: a552ef8a30dce6246a9e1562e671f6d7,
         type: 3}
       propertyPath: manaInMoment
       value: 
       objectReference: {fileID: 257099779}
-    - target: {fileID: 3740939951935750597, guid: a552ef8a30dce6246a9e1562e671f6d7,
+    - target: {fileID: 2803147859279890333, guid: a552ef8a30dce6246a9e1562e671f6d7,
         type: 3}
-      propertyPath: speedBullet
-      value: 12
-      objectReference: {fileID: 0}
+      propertyPath: spawnWall
+      value: 
+      objectReference: {fileID: 865539806}
+    - target: {fileID: 2803147859279890333, guid: a552ef8a30dce6246a9e1562e671f6d7,
+        type: 3}
+      propertyPath: SecondSkillsWall
+      value: 
+      objectReference: {fileID: 6569215112669128272, guid: 13a86feacadf2014f913583ce246291b,
+        type: 3}
     - target: {fileID: 4404774903345532237, guid: a552ef8a30dce6246a9e1562e671f6d7,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -13879,27 +13886,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hero
       objectReference: {fileID: 0}
-    - target: {fileID: 7840227336720752840, guid: a552ef8a30dce6246a9e1562e671f6d7,
-        type: 3}
-      propertyPath: m_Constraints
-      value: 116
-      objectReference: {fileID: 0}
-    - target: {fileID: 7840227336720752840, guid: a552ef8a30dce6246a9e1562e671f6d7,
-        type: 3}
-      propertyPath: m_IsKinematic
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7840227336720752840, guid: a552ef8a30dce6246a9e1562e671f6d7,
-        type: 3}
-      propertyPath: m_CollisionDetection
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8692845886488212575, guid: a552ef8a30dce6246a9e1562e671f6d7,
-        type: 3}
-      propertyPath: arrowThirdSkill
-      value: 
-      objectReference: {fileID: 4994684628410747729, guid: 7bac18eb97897ca4ca1be881383b2d30,
-        type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

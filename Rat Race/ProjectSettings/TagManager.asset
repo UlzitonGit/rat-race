@@ -10,6 +10,7 @@ TagManager:
   - Detecter
   - ManaUI
   - FightZone
+  - Dable
   layers:
   - Default
   - TransparentFX

@@ -14890,6 +14890,37 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!1 &4407362028077090894
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 853544556563343483}
+  m_Layer: 0
+  m_Name: SecondSkillsLauncher
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &853544556563343483
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4407362028077090894}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 3.86}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4404774903345532237}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4858706332920308197
 GameObject:
   m_ObjectHideFlags: 0
@@ -14962,6 +14993,7 @@ Transform:
   - {fileID: 336440060471272670}
   - {fileID: 6005538423643553639}
   - {fileID: 2716273884300824889}
+  - {fileID: 853544556563343483}
   - {fileID: 322720122699992448}
   - {fileID: 3532987792460696749}
   - {fileID: 6537975222195240461}
@@ -15018,7 +15050,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 116
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!114 &363751469122441734
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15031,6 +15063,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 855ac6f3e9732e6438c27a429f11f6b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rb: {fileID: 0}
+  characterController: {fileID: 0}
   moveSpeed: 5
   speedDebafApathy: 1.5
   currentSpeed: 5
@@ -15042,6 +15076,7 @@ MonoBehaviour:
   canWalk: 1
   canDash: 1
   minusManaDech: 20
+  gravityMult: 15
   HaveDebaf: 0
 --- !u!114 &3740939951935750597
 MonoBehaviour:
@@ -15058,7 +15093,7 @@ MonoBehaviour:
   spawnBullet: {fileID: 2716273884300824889}
   prefabBullet: {fileID: 4994684628410747729, guid: 78db13bd909a22748993aed9bbd8a8b8,
     type: 3}
-  speedBullet: 6
+  speedBullet: 12
   knifeDamage: 55
   enemy:
     serializedVersion: 2
@@ -15090,6 +15125,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   arrow: {fileID: 4994684628410747729, guid: a8b7322fc4e06014994ec35ef029b752, type: 3}
+  arrowThirdSkill: {fileID: 4994684628410747729, guid: 7bac18eb97897ca4ca1be881383b2d30,
+    type: 3}
   arrowEffect: {fileID: 4994684628410747729, guid: 839df3832ffcab945be290103d529a2a,
     type: 3}
   spp:
@@ -15097,9 +15134,11 @@ MonoBehaviour:
   - {fileID: 3531094224908130161}
   - {fileID: 7234390875497006409}
   - {fileID: 1750421527743109271}
-  manaForFirstSkill: 150
   anim: {fileID: 5893257342765911971}
   HitMinusMana: 95
+  manaForFirstSkill: 150
+  manaForSecondSkill: 0
+  manaForThirdSkill: 0
 --- !u!114 &2803147859279890333
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15118,6 +15157,8 @@ MonoBehaviour:
   firstSkillBullet: {fileID: 4994684628410747729, guid: 6704231586ec0ac48bdd1ecf357965df,
     type: 3}
   HitMinusMana: 100
+  HitMinusManaFS: 0
+  HitMinusManaSS: 0
 --- !u!114 &4642361590453549631
 MonoBehaviour:
   m_ObjectHideFlags: 0
