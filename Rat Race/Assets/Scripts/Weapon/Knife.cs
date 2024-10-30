@@ -43,7 +43,12 @@ public class Knife : MonoBehaviour
 
     [SerializeField] private float KD1Ability;
     [SerializeField] private float KD2Ability;
+    [SerializeField] private float KD3Ability;
     [SerializeField] private float minusMana1Ability;
+    [SerializeField] private float minusMana2Ability;
+    [SerializeField] private float minusMana3Ability;
+    
+    
 
     private EnemyDetecter enemyDetecter;
     private PlayerController playerController;
@@ -52,6 +57,8 @@ public class Knife : MonoBehaviour
 
     private bool can1Ablty = true;
     private bool can2Ablty = true;
+    private bool can3Ablty = true;
+    private bool is3Ablty = false;
     void Start()
     {
         ManaUIScript = GameObject.FindWithTag("ManaUI");
@@ -62,11 +69,12 @@ public class Knife : MonoBehaviour
     }
 
     
-    void Update()
+    void FixedUpdate()
     {
         
         KnifeAbility1();
         KnifeAbility2();
+        KnifeAbility3();
         if (Input.GetKey(KeyCode.Mouse0) && canAttack)
         {
             AttackMele();
@@ -117,9 +125,21 @@ public class Knife : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.X) && playerController.concentrate && can2Ablty)
         {
+            manaUI.mana -= minusMana2Ability;
             enemyDetecter.enemies[playerController.enemyToConcentrate].GetComponent<EnemyBehaviour>().Mark();
             StartCoroutine(SecondAbility());
         }
+    }
+    private void KnifeAbility3()
+    {
+        if (Input.GetKey(KeyCode.C) && playerController.concentrate && can3Ablty)
+        {
+            manaUI.mana -= minusMana3Ability;
+            is3Ablty = true;
+            StartCoroutine(ThirdAbility());
+            
+        }
+       
     }
 
     IEnumerator FirstAbility()
@@ -133,6 +153,12 @@ public class Knife : MonoBehaviour
         can2Ablty = false;
         yield return new WaitForSeconds(KD2Ability);
         can2Ablty = true;
+    }
+    IEnumerator ThirdAbility()
+    {
+        can3Ablty = false;
+        yield return new WaitForSeconds(KD3Ability);
+        can3Ablty = true;
     }
     IEnumerator Attacking()
     {
