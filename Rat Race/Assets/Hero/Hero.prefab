@@ -15110,8 +15110,11 @@ MonoBehaviour:
   anim: {fileID: 5893257342765911971}
   canAttack: 1
   KD1Ability: 4
-  KD2Ability: 0
+  KD2Ability: 6
+  KD3Ability: 8
   minusMana1Ability: 85
+  minusMana2Ability: 60
+  minusMana3Ability: 100
 --- !u!114 &8692845886488212575
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15152,10 +15155,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnBullet: {fileID: 322720122699992448}
+  spawnWall: {fileID: 853544556563343483}
   prefabBullet: {fileID: 4994684628410747729, guid: 47550e1b38f30734ba891be9138e9e4c,
     type: 3}
   firstSkillBullet: {fileID: 4994684628410747729, guid: 6704231586ec0ac48bdd1ecf357965df,
     type: 3}
+  SecondSkillsWall: {fileID: 6569215112669128272, guid: 13a86feacadf2014f913583ce246291b,
+    type: 3}
+  linkWall: {fileID: 0}
   HitMinusMana: 100
   HitMinusManaFS: 0
   HitMinusManaSS: 0

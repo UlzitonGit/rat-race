@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class ManaUI : MonoBehaviour
@@ -45,7 +46,10 @@ public class ManaUI : MonoBehaviour
         {
             StartPlusMana=true;
         }
-            
+        if(mana <= 0)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
 
         
 
