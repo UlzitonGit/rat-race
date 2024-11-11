@@ -30,6 +30,7 @@ public class PlayerController : MonoBehaviour
     private float gravity = -9.81f;
     [SerializeField] private float gravityMult = 3;
     [HideInInspector] public bool HaveDebaf;
+    private Knife knife;
     void Start()
     {
         characterController = GetComponent<CharacterController>();
@@ -38,7 +39,7 @@ public class PlayerController : MonoBehaviour
         enemyDetecter = GetComponentInChildren<EnemyDetecter>();
         ManaUIScript = GameObject.FindWithTag("ManaUI");
         manaUI = ManaUIScript.GetComponent<ManaUI>();
-
+        knife = GetComponent<Knife>();
     }
 
     // Update is called once per frame
@@ -110,7 +111,7 @@ public class PlayerController : MonoBehaviour
     }
     private void Concentration()
     {
-        if (enemyDetecter.enemies.Count != 0 && concentrate == true)
+        if (enemyDetecter.enemies.Count != 0 && concentrate == true && !knife.is3Ablty)
         {
             if (enemyToConcentrate > enemyDetecter.enemies.Count - 1) enemyToConcentrate = 0;
             Vector3 dir = enemyDetecter.enemies[enemyToConcentrate].transform.position;

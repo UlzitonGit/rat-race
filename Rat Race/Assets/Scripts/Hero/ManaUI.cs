@@ -48,7 +48,7 @@ public class ManaUI : MonoBehaviour
         }
         if(mana <= 0)
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
 
         

@@ -57,8 +57,14 @@ public class Knife : MonoBehaviour
 
     private bool can1Ablty = true;
     private bool can2Ablty = true;
+    
+
+    [Header("Ability3")]
+    public bool is3Ablty = false;
+    [SerializeField] private GameObject hit3Abl;
     private bool can3Ablty = true;
-    private bool is3Ablty = false;
+    [SerializeField] private float speedRotate3Abilitu;
+    private float countSpeed = 0;
     void Start()
     {
         ManaUIScript = GameObject.FindWithTag("ManaUI");
@@ -137,6 +143,22 @@ public class Knife : MonoBehaviour
             manaUI.mana -= minusMana3Ability;
             is3Ablty = true;
             StartCoroutine(ThirdAbility());
+            hit3Abl.SetActive(true);
+        }
+        if (is3Ablty)
+        {
+            if(countSpeed <= 360)
+            {
+                transform.Rotate(Vector3.up, speedRotate3Abilitu * Time.deltaTime);
+                countSpeed += speedRotate3Abilitu * Time.deltaTime;
+            }
+            else
+            {
+                is3Ablty = false;
+                countSpeed = 0;
+                hit3Abl.SetActive(false);
+                hit3Abl.GetComponent<AbilityKnife3Trigger>().countEnemy = 0;
+            }
             
         }
        

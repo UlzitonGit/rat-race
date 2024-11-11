@@ -25,7 +25,7 @@ public class EnemyBehaviour : MonoBehaviour
     [SerializeField] private GameObject secondBow;
     private Rigidbody rb;
     public bool isActive = true;
-    [HideInInspector] public float currentEnemyHealth;
+     public float currentEnemyHealth;
     private GameObject EnemyDetecterScript;
     EnemyDetecter detecter;
     FightingZone zone;
