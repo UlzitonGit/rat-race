@@ -23,7 +23,7 @@ public class EnemyBehaviour : MonoBehaviour
     [SerializeField] private ParticleSystem secondBowPart;
     [SerializeField] private ParticleSystem secondBowPartMark;
     [SerializeField] private GameObject secondBow;
-    private Rigidbody rb;
+    public Rigidbody rb;
     public bool isActive = true;
      public float currentEnemyHealth;
     private GameObject EnemyDetecterScript;
