@@ -48,8 +48,8 @@ public class BossController : EnemyBehaviour
             agent.enabled = false;
             rb.isKinematic = false;
             attackFirstSkill.SetActive(true);
-            rb.AddForce(transform.forward * 20, ForceMode.Impulse);
-            yield return new WaitForSeconds(0.6f);
+            rb.AddForce(transform.forward * 35, ForceMode.Impulse);
+            yield return new WaitForSeconds(0.65f);
             isActive = true;
             agent.enabled = true;
             rb.isKinematic = true;

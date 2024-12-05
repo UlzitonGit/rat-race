@@ -5154,7 +5154,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1404083733568296560
 Transform:
   m_ObjectHideFlags: 0
@@ -5235,7 +5235,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 60
-  parent: {fileID: 0}
   countEnemy: 0
 --- !u!65 &8939110408693484200
 BoxCollider:
@@ -15240,7 +15239,7 @@ MonoBehaviour:
   minusMana2Ability: 60
   minusMana3Ability: 100
   is3Ablty: 0
-  hit3Abl: {fileID: 0}
+  hit3Abl: {fileID: 903158212000980253}
   speedRotate3Abilitu: 300
 --- !u!114 &8692845886488212575
 MonoBehaviour:
