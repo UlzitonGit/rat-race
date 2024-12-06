@@ -13,7 +13,14 @@ public class PlatformManager : MonoBehaviour
     [SerializeField] Transform door;
     [SerializeField] float doorSpeed;
     [SerializeField] Transform targetPos;
-
+    bool isOpen;
+    private void Update()
+    {
+        if (isOpen)
+        {
+            door.position = Vector3.MoveTowards(door.position, targetPos.position, doorSpeed * Time.deltaTime);
+        }
+    }
     public void GetCurrentPlatformID(int id)
     {
         if(curList.Count < 4)
@@ -37,15 +44,20 @@ public class PlatformManager : MonoBehaviour
             {
                 Debug.Log($"Неправильно {curList[i]}, {answer[i]}");
                 curList.Clear();
-                for (int j = 0; j < 4; j++)
-                {
-                    Plates[j].ChangeColor(1);
-                    Plates[j].wasActivated = false;
-                }
+                StartCoroutine(FIX()); //На этом моменте оффаются плиты, поэтому у игрока будет 2 секунды, чтобы сойти с плиты + без этого будут баги
                 return;
             }
         }
         Debug.Log("Правильно");
-        door.position = Vector3.MoveTowards(door.position, targetPos.position, doorSpeed);
+        isOpen = true;
+    }
+    IEnumerator FIX()
+    {
+        yield return new WaitForSeconds(2);
+        for (int j = 0; j < 4; j++)
+        {
+            Plates[j].ChangeColor(1);
+            Plates[j].wasActivated = false;
+        }
     }
 }
