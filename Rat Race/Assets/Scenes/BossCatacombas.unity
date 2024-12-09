@@ -4023,6 +4023,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1791810307}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &594725380 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 9135362681568970864, guid: a552ef8a30dce6246a9e1562e671f6d7,
+    type: 3}
+  m_PrefabInstance: {fileID: 7736326453387465268}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &596387331 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4677571737611520, guid: e67d5042c895ac94aa7ecf7aaa3311a9,
@@ -5543,12 +5549,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4015099136761470, guid: a41eae732d782c4419a6ea7be671e98b,
     type: 3}
   m_PrefabInstance: {fileID: 397948451}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &920148470 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 903158212000980253, guid: a552ef8a30dce6246a9e1562e671f6d7,
-    type: 3}
-  m_PrefabInstance: {fileID: 7736326453387465268}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &932025826 stripped
 Transform:
@@ -7753,21 +7753,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1550043103310264875, guid: 83d9635af84a3504e8c25fae6f108848,
+    - target: {fileID: 1474221328678358507, guid: 83d9635af84a3504e8c25fae6f108848,
         type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
+      propertyPath: tentacle
+      value: 
+      objectReference: {fileID: 7419899847663270045, guid: 871418c5570ae1d47818bab19b1f7e96,
+        type: 3}
     - target: {fileID: 3008512071355713661, guid: 83d9635af84a3504e8c25fae6f108848,
         type: 3}
       propertyPath: m_Name
       value: FirstBoss
       objectReference: {fileID: 0}
-    - target: {fileID: 4880606791840870141, guid: 83d9635af84a3504e8c25fae6f108848,
-        type: 3}
-      propertyPath: 'm_Materials.Array.data[0]'
-      value: 
-      objectReference: {fileID: 2100000, guid: 36f2274744497064f9c252d32733af58, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -12562,24 +12558,14 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 363751469122441734, guid: a552ef8a30dce6246a9e1562e671f6d7,
         type: 3}
-      propertyPath: moveSpeed
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 903158212000980253, guid: a552ef8a30dce6246a9e1562e671f6d7,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
+      propertyPath: thirdAttackPos
+      value: 
+      objectReference: {fileID: 594725380}
     - target: {fileID: 1977512851884429500, guid: a552ef8a30dce6246a9e1562e671f6d7,
         type: 3}
       propertyPath: manaInMoment
       value: 
       objectReference: {fileID: 257099779}
-    - target: {fileID: 3740939951935750597, guid: a552ef8a30dce6246a9e1562e671f6d7,
-        type: 3}
-      propertyPath: hit3Abl
-      value: 
-      objectReference: {fileID: 920148470}
     - target: {fileID: 4404774903345532237, guid: a552ef8a30dce6246a9e1562e671f6d7,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -12634,6 +12620,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Hero
+      objectReference: {fileID: 0}
+    - target: {fileID: 7840227336720752840, guid: a552ef8a30dce6246a9e1562e671f6d7,
+        type: 3}
+      propertyPath: m_IsKinematic
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

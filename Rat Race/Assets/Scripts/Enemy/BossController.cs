@@ -16,12 +16,18 @@ public class BossController : EnemyBehaviour
     [SerializeField] private LayerMask obstacles;
     [SerializeField] GameObject attackFirstSkill;
     [SerializeField] ParticleSystem shootPart;
+    [SerializeField] ParticleSystem teleport;
     [SerializeField] private float hitFromHand;
+    [SerializeField] Animator anim;
+    [SerializeField] GameObject tentacle;
+    
     private ManaUI manaUI;
-    bool canAttack = true;
+
+    PlayerController _playerController;
     // Start is called before the first frame update
     void Start()
     {
+        _playerController = Player.GetComponent<PlayerController>();
         ManaUIScript = GameObject.FindWithTag("ManaUI");
         manaUI = ManaUIScript.GetComponent<ManaUI>();
 
@@ -44,9 +50,46 @@ public class BossController : EnemyBehaviour
         {
             yield return new WaitForSeconds(2);
 
-            StartCoroutine("Attack" + Random.Range(1, 3).ToString());
+            StartCoroutine("Attack" + Random.Range(3, 4).ToString());
         }
        
+    }
+    IEnumerator Attack3()
+    {
+        if(canAttack == true)
+        {
+            anim.SetTrigger("thirdAttack");
+            canAttack = false;
+            isActive = false;
+            teleport.Play();
+            yield return new WaitForSeconds (1);
+            transform.position = _playerController.thirdAttackPos.position;
+            yield return new WaitForSeconds(0.3f);
+            transform.LookAt(playerController.position);
+            teleport.Play();
+            yield return new WaitForSeconds(0.4f);
+            attackFirstSkill.SetActive(true);
+            yield return new WaitForSeconds(0.2f);
+            attackFirstSkill.SetActive(false);
+            yield return new WaitForSeconds(1);
+            isActive = true;
+            canAttack = true;
+        }
+    }
+    IEnumerator Attack4()
+    {
+        if (canAttack == true)
+        {
+            
+            canAttack = false;
+            isActive = false;
+           
+            yield return new WaitForSeconds(0.5f);
+            Instantiate(tentacle, _playerController.thirdAttackPos.position, Quaternion.identity);
+            yield return new WaitForSeconds(1f);
+            isActive = true;
+            canAttack = true;
+        }
     }
     IEnumerator Attack2()
     {

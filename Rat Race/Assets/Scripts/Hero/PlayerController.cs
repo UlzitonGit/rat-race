@@ -24,6 +24,7 @@ public class PlayerController : MonoBehaviour
 
     [Header("Mana")]
     [SerializeField] float minusManaDech;
+    [SerializeField] public Transform thirdAttackPos;
     private GameObject ManaUIScript;
     private ManaUI manaUI;
     private float _falling;
