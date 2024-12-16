@@ -25,7 +25,7 @@ public class EnemyBehaviour : MonoBehaviour
     [SerializeField] private GameObject secondBow;
     public Rigidbody rb;
     public bool isActive = true;
-     public float currentEnemyHealth;
+    public float currentEnemyHealth;
     private GameObject EnemyDetecterScript;
     EnemyDetecter detecter;
     FightingZone zone;
@@ -143,7 +143,7 @@ public class EnemyBehaviour : MonoBehaviour
 
         
     }
-    public void GetDamage(float damage)
+    public virtual void GetDamage(float damage)
     {
         currentEnemyHealth -= damage;
         if (bowSecond == true) OverlapAttack(damage);
