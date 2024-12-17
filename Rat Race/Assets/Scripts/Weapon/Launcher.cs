@@ -20,7 +20,7 @@ public class Launcher : MonoBehaviour
     private GameObject ManaUIScript;
     private ManaUI manaUI;
     private bool canUseFirstSkill = true;
-    private bool canUseSecondSkill = true;
+    private bool canUseSecondSkill = false; //true
     private void Start()
     {
         ManaUIScript = GameObject.FindWithTag("ManaUI");

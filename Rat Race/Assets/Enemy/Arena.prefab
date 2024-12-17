@@ -9,9 +9,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 781957098740752606}
+  - component: {fileID: 7512205081972105659}
+  - component: {fileID: 8817349869739192864}
   m_Layer: 0
   m_Name: Arena
-  m_TagString: Untagged
+  m_TagString: FightZone
   m_Icon: {fileID: 7866945982896999795, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -26,7 +28,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 8.71, y: 1.1, z: -39.01}
-  m_LocalScale: {x: 0.93678135, y: 0.93678135, z: 0.93678135}
+  m_LocalScale: {x: 0.7444168, y: 0.7444168, z: 0.7444168}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7744361264603656781}
@@ -35,6 +37,45 @@ Transform:
   - {fileID: 6893819203336294363}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7512205081972105659
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1991171788551579294}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4def56d47c7b8e644af1b80afff3fafd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemies: []
+  area:
+  - {fileID: 7740769107442944629}
+  - {fileID: 3923747775044792760}
+  - {fileID: 4191395962420680474}
+  - {fileID: 6898960467170621411}
+--- !u!65 &8817349869739192864
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1991171788551579294}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 44.52, y: 31.6, z: 32.93}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &3924477108273262242
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -46,6 +87,10 @@ PrefabInstance:
     - target: {fileID: 1540333649370906, guid: e091941bee533bf4d9a4b38c3f89b6f5, type: 3}
       propertyPath: m_Name
       value: SunShaft (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1540333649370906, guid: e091941bee533bf4d9a4b38c3f89b6f5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4709314158339874, guid: e091941bee533bf4d9a4b38c3f89b6f5, type: 3}
       propertyPath: m_LocalScale.x
@@ -163,6 +208,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SunShaft (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 1540333649370906, guid: e091941bee533bf4d9a4b38c3f89b6f5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4709314158339874, guid: e091941bee533bf4d9a4b38c3f89b6f5, type: 3}
       propertyPath: m_LocalScale.x
       value: 43.76657
@@ -279,6 +328,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SunShaft (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 1540333649370906, guid: e091941bee533bf4d9a4b38c3f89b6f5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4709314158339874, guid: e091941bee533bf4d9a4b38c3f89b6f5, type: 3}
       propertyPath: m_LocalScale.x
       value: 44.048214
@@ -394,6 +447,10 @@ PrefabInstance:
     - target: {fileID: 1540333649370906, guid: e091941bee533bf4d9a4b38c3f89b6f5, type: 3}
       propertyPath: m_Name
       value: SunShaft
+      objectReference: {fileID: 0}
+    - target: {fileID: 1540333649370906, guid: e091941bee533bf4d9a4b38c3f89b6f5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4709314158339874, guid: e091941bee533bf4d9a4b38c3f89b6f5, type: 3}
       propertyPath: m_LocalScale.x

@@ -56,13 +56,13 @@ public class Knife : MonoBehaviour
     private Transform NearEnemyPoint;
 
     private bool can1Ablty = true;
-    private bool can2Ablty = true;
-    
+    private bool can2Ablty = false; //true
+
 
     [Header("Ability3")]
     public bool is3Ablty = false;
     [SerializeField] private GameObject hit3Abl;
-    private bool can3Ablty = true;
+    private bool can3Ablty = false; //true
     [SerializeField] private float speedRotate3Abilitu;
     private float countSpeed = 0;
     void Start()

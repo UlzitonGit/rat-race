@@ -26,6 +26,7 @@ public class FightingZone : MonoBehaviour
     public void minusEnemy(GameObject enemy)
     {
         enemies.Remove(enemy);
+        
     }
     public void PlusEnemy(GameObject enemy)
     {

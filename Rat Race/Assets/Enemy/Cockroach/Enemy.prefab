@@ -89,12 +89,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isRaged: 0
-  rageDistance: 20
+  rageDistance: 28
+  agent: {fileID: 0}
   playerController: {fileID: 0}
+  Player: {fileID: 0}
+  speed: 0
   canAttack: 1
   distance: 0
   markeEffect: {fileID: 937873397926398518}
-  health: 50
+  health: 100
   chainEffect: {fileID: 4829176754049513110}
   enemy:
     serializedVersion: 2
@@ -104,7 +107,9 @@ MonoBehaviour:
   secondBowPartMark: {fileID: 4913267807572061221}
   secondBow: {fileID: 4628105355899471024, guid: 73a4eb3202488f649878e928752703ab,
     type: 3}
+  rb: {fileID: 0}
   isActive: 1
+  currentEnemyHealth: 0
   arrows: 0
   spp:
   - {fileID: 7568068977722177225}

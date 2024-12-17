@@ -11,24 +11,22 @@ public class WeaponSwitch : MonoBehaviour
     Knife knife;
     Bow bow;
     Launcher launcher;
+
+
+ 
     private void Start()
     {
         knife = GetComponent<Knife>();
         bow = GetComponent<Bow>();
         launcher = GetComponent<Launcher>();
+        Khife();
+
     }
     private void Update()
     {
         if (Input.GetKey(KeyCode.Alpha1))
         {
-            animator.SetBool("Launcher", false);
-            bow.Switch();
-            knife.enabled = true;
-            knifeModel.SetActive(true);
-            launcherModel.SetActive(false);
-            bow.enabled = false;
-            bowModel.SetActive(false);
-            launcher.enabled = false;
+            Khife();
         }
         if (Input.GetKey(KeyCode.Alpha2))
         {
@@ -52,4 +50,18 @@ public class WeaponSwitch : MonoBehaviour
             bowModel.SetActive(false);
         }
     }
+    private void Khife()
+    { 
+        animator.SetBool("Launcher", false);
+            bow.Switch();
+            knife.enabled = true;
+            knifeModel.SetActive(true);
+            launcherModel.SetActive(false);
+            bow.enabled = false;
+            bowModel.SetActive(false);
+            launcher.enabled = false;
+
+    }
+   
+   
 }

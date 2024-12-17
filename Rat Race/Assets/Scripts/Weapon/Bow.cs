@@ -14,8 +14,8 @@ public class Bow : MonoBehaviour
 
 
     private bool firstSkill = true;
-    private bool secondSkill = true;
-    private bool thirdSkill = true;
+    private bool secondSkill = false; //true
+    private bool thirdSkill = false; //true
 
     private bool isHolding = false;
     
