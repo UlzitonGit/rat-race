@@ -4926,10 +4926,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.9680314
-  m_Height: 1.9360628
+  m_Radius: 0.8346844
+  m_Height: 4.5821466
   m_Direction: 1
-  m_Center: {x: 0.088029385, y: -0.2558236, z: -0.00000011920929}
+  m_Center: {x: 0.12073326, y: 0.6845188, z: -0.36323476}
 --- !u!195 &4941394791593463803
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -4973,7 +4973,7 @@ MonoBehaviour:
   canAttack: 1
   distance: 0
   markeEffect: {fileID: 2905514287423946809}
-  health: 125
+  health: 100
   chainEffect: {fileID: 7082853842701830590}
   enemy:
     serializedVersion: 2
@@ -4983,6 +4983,7 @@ MonoBehaviour:
   secondBowPartMark: {fileID: 1989989996560825292}
   secondBow: {fileID: 4628105355899471024, guid: 73a4eb3202488f649878e928752703ab,
     type: 3}
+  rb: {fileID: 0}
   isActive: 1
   currentEnemyHealth: 0
   arrows: 0
@@ -5024,7 +5025,7 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 116
   m_CollisionDetection: 0

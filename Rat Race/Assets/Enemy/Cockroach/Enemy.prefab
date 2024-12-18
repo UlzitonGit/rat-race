@@ -90,7 +90,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isRaged: 0
   rageDistance: 20
+  agent: {fileID: 0}
   playerController: {fileID: 0}
+  Player: {fileID: 0}
+  speed: 0
   canAttack: 1
   distance: 0
   markeEffect: {fileID: 937873397926398518}
@@ -104,7 +107,9 @@ MonoBehaviour:
   secondBowPartMark: {fileID: 4913267807572061221}
   secondBow: {fileID: 4628105355899471024, guid: 73a4eb3202488f649878e928752703ab,
     type: 3}
+  rb: {fileID: 0}
   isActive: 1
+  currentEnemyHealth: 0
   arrows: 0
   spp:
   - {fileID: 7568068977722177225}
@@ -136,7 +141,7 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 116
   m_CollisionDetection: 0
