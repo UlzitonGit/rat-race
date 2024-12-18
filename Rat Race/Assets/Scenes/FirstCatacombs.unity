@@ -13749,7 +13749,7 @@ PrefabInstance:
     - target: {fileID: 4023760309355263881, guid: a552ef8a30dce6246a9e1562e671f6d7,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4404774903345532237, guid: a552ef8a30dce6246a9e1562e671f6d7,
         type: 3}
@@ -13807,6 +13807,11 @@ PrefabInstance:
       value: Hero
       objectReference: {fileID: 0}
     - target: {fileID: 6149461965227262294, guid: a552ef8a30dce6246a9e1562e671f6d7,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8133239101595795137, guid: a552ef8a30dce6246a9e1562e671f6d7,
         type: 3}
       propertyPath: m_IsActive
       value: 0
